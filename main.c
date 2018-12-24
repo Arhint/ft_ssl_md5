@@ -23,17 +23,28 @@ void	print_bits(unsigned char octet)
 	write(1, "\n", 1);
 }
 
+void	print_bits_32(int octet)
+{
+	int i;
+
+	i = 31;
+	while (i >= 0)
+	{
+		octet & (1 << i) ? write(1, "1", 1) : write(1, "0", 1);
+		i--;
+	}
+	write(1, "\n", 1);
+}
+
 int		main()
 {
-	char			str[] = "test";
+	char			str[] = "md5";
 	size_t			bit_len;
 	unsigned char	*res_bits;
 	size_t			str_len;
-	int				k = 1;
 
 	str_len = ft_strlen(str);
 	bit_len = num_bits(str);
-	ft_printf("bit_len = %d\n", bit_len);
 	res_bits = (unsigned char *)malloc(bit_len);
 	ft_bzero(res_bits, bit_len);
 	ft_memcpy(res_bits, str, ft_strlen(str));
@@ -47,13 +58,15 @@ int		main()
 	res_bits[bit_len - 2] = (unsigned char)(str_len & 0x00FF000000000000);
 	res_bits[bit_len - 1] = (unsigned char)(str_len & 0xFF00000000000000);
 //	ft_printf("str = %s || len = %zd\n", res_bits, bit_len);
-	for (int i = bit_len; i != 0; i--)
-	{
-		ft_printf("%d - ", k);
-		print_bits(res_bits[bit_len - i]);
-		k++;
-	}
-	ft_md5(res_bits, bit_len);
-
+//	int				k = 1;
+//	for (int i = bit_len; i != 0; i--)
+//	{
+//		ft_printf("%d - ", k);
+//		print_bits(res_bits[bit_len - i]);
+//		k++;
+//	}
+	ft_printf("bit_len = %d\n", bit_len);
+	ft_md5(res_bits, (int)bit_len);
+	ft_printf("%s\n", "1bc29b36f623ba82aaf6724fd3b16718");
 	return (0);
 }

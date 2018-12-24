@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ssavchen/ft_ssl/help_md5.c">
+			<Option target="ft_ssl"/>
+		</Unit>
 		<Unit filename="/Users/ssavchen/ft_ssl/main.c">
 			<Option target="ft_ssl"/>
 		</Unit>
