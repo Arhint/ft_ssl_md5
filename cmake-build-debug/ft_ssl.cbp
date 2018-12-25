@@ -8,93 +8,91 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/ssavchen/ft_ssl/cmake-build-debug"/>
+				<Option working_dir="/home/arh/study/ft_sslf/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/ssavchen/ft_ssl/cmake-build-debug"/>
+				<Option working_dir="/home/arh/study/ft_sslf/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/Users/ssavchen/ft_ssl/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft_ssl">
-				<Option output="/Users/ssavchen/ft_ssl/cmake-build-debug/ft_ssl" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ssavchen/ft_ssl/cmake-build-debug"/>
+				<Option output="/home/arh/study/ft_sslf/cmake-build-debug/ft_ssl" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arh/study/ft_sslf/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ssavchen/ft_ssl/."/>
+					<Add directory="/home/arh/study/ft_sslf/."/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ssl"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ssl"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft_ssl/fast">
-				<Option output="/Users/ssavchen/ft_ssl/cmake-build-debug/ft_ssl" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ssavchen/ft_ssl/cmake-build-debug"/>
+				<Option output="/home/arh/study/ft_sslf/cmake-build-debug/ft_ssl" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arh/study/ft_sslf/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/ssavchen/ft_ssl/."/>
+					<Add directory="/home/arh/study/ft_sslf/."/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ssl/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ssavchen/ft_ssl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_ssl/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/arh/study/ft_sslf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arh/study/ft_sslf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ssavchen/ft_ssl/help_md5.c">
+		<Unit filename="/home/arh/study/ft_sslf/help_md5.c">
 			<Option target="ft_ssl"/>
 		</Unit>
-		<Unit filename="/Users/ssavchen/ft_ssl/main.c">
+		<Unit filename="/home/arh/study/ft_sslf/main.c">
 			<Option target="ft_ssl"/>
 		</Unit>
-		<Unit filename="/Users/ssavchen/ft_ssl/md5.c">
+		<Unit filename="/home/arh/study/ft_sslf/md5.c">
 			<Option target="ft_ssl"/>
 		</Unit>
-		<Unit filename="/Users/ssavchen/ft_ssl/ss_ssl.h">
+		<Unit filename="/home/arh/study/ft_sslf/ss_ssl.h">
 			<Option target="ft_ssl"/>
 		</Unit>
-		<Unit filename="/Users/ssavchen/ft_ssl/CMakeLists.txt">
+		<Unit filename="/home/arh/study/ft_sslf/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

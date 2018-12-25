@@ -1,6 +1,6 @@
 #include "ss_ssl.h"
 
-static int s[64] = {
+static uint32_t s[64] = {
 		7, 12, 17, 22, 7, 12, 17, 22,
 		7, 12, 17, 22, 7, 12, 17, 22,
 		5,  9, 14, 20, 5,  9, 14, 20,
@@ -11,7 +11,7 @@ static int s[64] = {
 		6, 10, 15, 21, 6, 10, 15, 21
 };
 
-static int k[64] = {
+static uint32_t k[64] = {
 		0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
 		0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
 		0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -42,13 +42,13 @@ void	ft_md5(unsigned char *res_bits, size_t len)
 {
 	t_md5			*md5;
 	int				i = 0;
-	int	a0;
-	int	b0;
-	int	c0;
-	int	d0;
-	int				f = 0;
+	uint32_t		a0;
+	uint32_t		b0;
+	uint32_t		c0;
+	uint32_t		d0;
+	uint32_t		f;
 	int				g;
-	int		*istr;
+	uint32_t		*istr;
 
 	istr = ft_from_8_to_16(res_bits, len);
 	md5 = (t_md5 *)malloc(sizeof(t_md5));
@@ -90,7 +90,6 @@ void	ft_md5(unsigned char *res_bits, size_t len)
 
 			i++;
 		}
-//		ft_printf("i = %d\n", i );
 		md5->a += a0;
 		md5->b += b0;
 		md5->c += c0;
@@ -106,28 +105,27 @@ void	ft_md5(unsigned char *res_bits, size_t len)
 	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
 	p = (uint8_t *)&md5->d;
 	printf("%2.2x%2.2x%2.2x%2.2x\n", p[0], p[1], p[2], p[3]);
-	ft_printf("%x\n", md5->d);
-	ft_printf("%x\n", md5->c);
-	ft_printf("%x\n", md5->b);
 	ft_printf("%x\n", md5->a);
-
+	ft_printf("%x\n", md5->b);
+	ft_printf("%x\n", md5->c);
+	ft_printf("%x\n", md5->d);
 }
 
-int 	ft_left_rotate(int f, int s)
+int 	ft_left_rotate(uint32_t f, uint32_t s)
 {
 	return ((f << s) | (f >> (32 - s)));
 }
 
-int		*ft_from_8_to_16(unsigned char * str, int len)
+uint32_t		*ft_from_8_to_16(unsigned char *str, int len)
 {
-	int *istr;
+	uint32_t *istr;
 	int i = 0;
 	int j = 0;
 
-	istr = (int *) malloc(len);
-	bzero(istr, len);
-//	ft_printf("len = %d\n", len);
-	while (i < len)
+	istr = (uint32_t *) malloc(sizeof(uint32_t) * 16);
+	ft_bzero(istr, (size_t)len);
+
+	while (i < 64)
 	{
 		istr[j] = istr[j] | str[i + 3];
 		istr[j] = (istr[j] << 8);
@@ -137,25 +135,8 @@ int		*ft_from_8_to_16(unsigned char * str, int len)
 		istr[j] = (istr[j] << 8);
 		istr[j] = istr[j] | str[i];
 
-//		istr[j] = istr[j] | str[i];
-//		istr[j] = (istr[j] << 8);
-//		istr[j] = istr[j] | str[i + 1];
-//		istr[j] = (istr[j] << 8);
-//		istr[j] = istr[j] | str[i + 2];
-//		istr[j] = (istr[j] << 8);
-//		istr[j] = istr[j] | str[i + 3];
-
-
 		j++;
 		i += 4;
-//		ft_printf("num istr = %d\n", j);
 	}
-//	int				k = 0;
-//	for (int i = 16; i != 0; i--)
-//	{
-//		ft_printf("%d - ", k);
-//		print_bits_32(istr[k]);
-//		k++;
-//	}
 	return (istr);
 }
