@@ -30,102 +30,115 @@ static uint32_t k[64] = {
 		0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 };
 
-void	init_md5(t_md5 *md)
+void	init_md5(t_md5 *md, size_t len)
 {
 	md->a = 0x67452301;
 	md->b = 0xefcdab89;
 	md->c = 0x98badcfe;
 	md->d = 0x10325476;
+	md->a0 = md->a;
+	md->b0 = md->b;
+	md->c0 = md->c;
+	md->d0 = md->d;
+	md->blocks = (int)len / 64;
 }
 
-void	ft_md5(unsigned char *res_bits, size_t len)
+void		ft_algo_md5(t_md5 *md5, int i)
+{
+	if (i < 16)
+	{
+		md5->f = (md5->b0 & md5->c0) | ((~md5->b0) & md5->d0);
+		md5->g = i;
+	}
+	else if (i < 32)
+	{
+		md5->f = (md5->d0 & md5->b0) | ((~md5->d0) & md5->c0);
+		md5->g = (5 * i + 1) % 16;
+	}
+	else if (i < 48)
+	{
+		md5->f = md5->b0 ^ md5->c0 ^ md5->d0;
+		md5->g = (3 * i + 5) % 16;
+	}
+	else if (i < 64)
+	{
+		md5->f = md5->c0 ^ (md5->b0 | (~md5->d0));
+		md5->g = (7 * i) % 16;
+	}
+}
+
+void		ft_algo2_md5(t_md5 *md5, uint32_t *istr)
+{
+	int i;
+
+	i = 0;
+	while (i < 64)
+	{
+		ft_algo_md5(md5, i);
+		md5->f = md5->f + md5->a0 + k[i] + istr[md5->g];
+		md5->a0 = md5->d0;
+		md5->d0 = md5->c0;
+		md5->c0 = md5->b0;
+		md5->b0 = md5->b0 + ft_left_rotate(md5->f, s[i]);
+		i++;
+	}
+	md5->a += md5->a0;
+	md5->b += md5->b0;
+	md5->c += md5->c0;
+	md5->d += md5->d0;
+	md5->a0 = md5->a;
+	md5->b0 = md5->b;
+	md5->c0 = md5->c;
+	md5->d0 = md5->d;
+	md5->blocks--;
+}
+
+void		ft_md5(uint32_t *istr, size_t len)
 {
 	t_md5			*md5;
-	int				i = 0;
-	uint32_t		a0;
-	uint32_t		b0;
-	uint32_t		c0;
-	uint32_t		d0;
-	uint32_t		f;
-	int				g;
-	uint32_t		*istr;
+	int				i;
 
-	istr = ft_from_8_to_16(res_bits, len);
+	i = 0;
 	md5 = (t_md5 *)malloc(sizeof(t_md5));
-	init_md5(md5);
-	a0 = md5->a;
-	b0 = md5->b;
-	c0 = md5->c;
-	d0 = md5->d;
-	md5->blocks = len / 64;
+	init_md5(md5, len);
 	while (md5->blocks)
 	{
-		while (i < 64)
-		{
-			if (i < 16)
-			{
-				f = (b0 & c0) | ((~b0) & d0);
-				g = i;
-			}
-			else if (i < 32)
-			{
-				f = (d0 & b0) | ((~d0) & c0);
-				g = (5 * i + 1) % 16;
-			}
-			else if (i < 48)
-			{
-				f = b0 ^ c0 ^ d0;
-				g = (3 * i + 5) % 16;
-			}
-			else if (i < 64)
-			{
-				f = c0 ^ (b0 | (~d0));
-				g = (7 * i) % 16;
-			}
-			f = f + a0 + k[i] + istr[g];
-			a0 = d0;
-			d0 = c0;
-			c0 = b0;
-			b0 = b0 + ft_left_rotate(f, s[i]);
-
-			i++;
-		}
-		md5->a += a0;
-		md5->b += b0;
-		md5->c += c0;
-		md5->d += d0;
-		md5->blocks--;
+		ft_algo2_md5(md5, istr + i);
+		i += 16;
 	}
-	uint8_t *p;
-	p = (uint8_t *)&md5->a;
-	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-	p = (uint8_t *)&md5->b;
-	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-	p = (uint8_t *)&md5->c;
-	printf("%2.2x%2.2x%2.2x%2.2x", p[0], p[1], p[2], p[3]);
-	p = (uint8_t *)&md5->d;
-	printf("%2.2x%2.2x%2.2x%2.2x\n", p[0], p[1], p[2], p[3]);
-	ft_printf("%x\n", md5->a);
-	ft_printf("%x\n", md5->b);
-	ft_printf("%x\n", md5->c);
-	ft_printf("%x\n", md5->d);
+	ft_print_md5(md5);
 }
 
-int 	ft_left_rotate(uint32_t f, uint32_t s)
+uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
 {
 	return ((f << s) | (f >> (32 - s)));
 }
 
-uint32_t		*ft_from_8_to_16(unsigned char *str, int len)
+void		ft_print_md5(t_md5 *md5)
 {
-	uint32_t *istr;
-	int i = 0;
-	int j = 0;
+	uint8_t		*res;
 
-	istr = (uint32_t *) malloc(sizeof(uint32_t) * 16);
+	res = (uint8_t *)&md5->a;
+	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	res = (uint8_t *)&md5->b;
+	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	res = (uint8_t *)&md5->c;
+	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	res = (uint8_t *)&md5->d;
+	ft_printf("%02x%02x%02x%02x\n", res[0], res[1], res[2], res[3]);
+}
+
+uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
+{
+	uint32_t			*istr;
+	unsigned int		i;
+	unsigned int		j;
+
+	i = 0;
+	j = 0;
+	istr = (uint32_t *) malloc(sizeof(uint32_t) * len / 4);
 	ft_bzero(istr, (size_t)len);
-
-	while (i < 64)
+	while (i < len)
 	{
 		istr[j] = istr[j] | str[i + 3];
 		istr[j] = (istr[j] << 8);
@@ -134,9 +147,15 @@ uint32_t		*ft_from_8_to_16(unsigned char *str, int len)
 		istr[j] = istr[j] | str[i + 1];
 		istr[j] = (istr[j] << 8);
 		istr[j] = istr[j] | str[i];
-
 		j++;
 		i += 4;
 	}
+//	int				t = 1;
+//	for (int i = len / 4; i != 0; i--)
+//	{
+//		ft_printf("%d - ", t);
+//		print_bits_32(istr[len / 4 - i]);
+//		t++;
+//	}
 	return (istr);
 }

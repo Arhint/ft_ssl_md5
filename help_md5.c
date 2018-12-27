@@ -1,26 +1,27 @@
-#include <ss_ssl.h>
+#include "ss_ssl.h"
 
-int		ss_f(int b, int c, int d)
+void	print_bits(unsigned char octet)
 {
-	return ((b & c) | ((~b) & d));
+	int i;
+
+	i = 7;
+	while (i >= 0)
+	{
+		octet & (1 << i) ? write(1, "1", 1) : write(1, "0", 1);
+		i--;
+	}
+	write(1, "\n", 1);
 }
 
-int		ss_g(int b, int c, int d)
+void	print_bits_32(uint32_t octet)
 {
-	return ((d & b) | ((~d) & c));
-}
+	int i;
 
-int		ss_h(int b, int c, int d)
-{
-	return (b ^ c ^ d);
-}
-
-int		ss_i(int b, int c, int d)
-{
-	return (c ^ (b | (~d)));
-}
-
-int		ss_ff(int a, int b, int c, int d, int ac, int *istr)
-{
-	a += ss_f(b, c, d) + k[i]
+	i = 31;
+	while (i >= 0)
+	{
+		octet & (1 << i) ? write(1, "1", 1) : write(1, "0", 1);
+		i--;
+	}
+	write(1, "\n", 1);
 }
