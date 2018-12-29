@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(ft_ssl
 		main.c
-		ss_ssl.h md5.c help_md5.c)
+		ss_ssl.h md5.c help_md5.c sha256.c)

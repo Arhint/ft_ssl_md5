@@ -204,6 +204,33 @@ md5.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/md5.c.s
 .PHONY : md5.c.s
 
+sha256.o: sha256.c.o
+
+.PHONY : sha256.o
+
+# target to build an object file
+sha256.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha256.c.o
+.PHONY : sha256.c.o
+
+sha256.i: sha256.c.i
+
+.PHONY : sha256.i
+
+# target to preprocess a source file
+sha256.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha256.c.i
+.PHONY : sha256.c.i
+
+sha256.s: sha256.c.s
+
+.PHONY : sha256.s
+
+# target to generate assembly for a file
+sha256.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha256.c.s
+.PHONY : sha256.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,6 +249,9 @@ help:
 	@echo "... md5.o"
 	@echo "... md5.i"
 	@echo "... md5.s"
+	@echo "... sha256.o"
+	@echo "... sha256.i"
+	@echo "... sha256.s"
 .PHONY : help
 
 

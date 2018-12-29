@@ -1,6 +1,6 @@
 #include "ss_ssl.h"
 
-static uint32_t s[64] = {
+static const uint32_t s[64] = {
 		7, 12, 17, 22, 7, 12, 17, 22,
 		7, 12, 17, 22, 7, 12, 17, 22,
 		5,  9, 14, 20, 5,  9, 14, 20,
@@ -11,7 +11,7 @@ static uint32_t s[64] = {
 		6, 10, 15, 21, 6, 10, 15, 21
 };
 
-static uint32_t k[64] = {
+static const uint32_t k[64] = {
 		0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
 		0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
 		0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -106,7 +106,9 @@ void		ft_md5(uint32_t *istr, size_t len)
 		ft_algo2_md5(md5, istr + i);
 		i += 16;
 	}
+	free(istr);
 	ft_print_md5(md5);
+	free(md5);
 }
 
 uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
@@ -137,7 +139,7 @@ uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
 	i = 0;
 	j = 0;
 	istr = (uint32_t *) malloc(sizeof(uint32_t) * len / 4);
-	ft_bzero(istr, (size_t)len);
+	ft_bzero(istr, len);
 	while (i < len)
 	{
 		istr[j] = istr[j] | str[i + 3];
@@ -150,12 +152,6 @@ uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
 		j++;
 		i += 4;
 	}
-//	int				t = 1;
-//	for (int i = len / 4; i != 0; i--)
-//	{
-//		ft_printf("%d - ", t);
-//		print_bits_32(istr[len / 4 - i]);
-//		t++;
-//	}
+	free(str);
 	return (istr);
 }

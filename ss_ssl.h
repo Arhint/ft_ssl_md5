@@ -6,7 +6,7 @@
 #include <math.h>
 # include <stdint.h>
 
-typedef			struct	s_md5
+typedef					struct	s_md5
 {
 	uint32_t			a;
 	uint32_t			b;
@@ -21,10 +21,47 @@ typedef			struct	s_md5
 	int					blocks;
 }						t_md5;
 
+typedef					struct	s_s256
+{
+	uint32_t			a;
+	uint32_t			b;
+	uint32_t			c;
+	uint32_t			d;
+	uint32_t			e;
+	uint32_t			f;
+	uint32_t			g;
+	uint32_t			h;
+	uint32_t			h0;
+	uint32_t			h1;
+	uint32_t			h2;
+	uint32_t			h3;
+	uint32_t			h4;
+	uint32_t			h5;
+	uint32_t			h6;
+	uint32_t			h7;
+	uint32_t			tmp1;
+	uint32_t			tmp2;
+	int					blocks;
+}						t_s256;
+
+typedef					struct t_flag
+{
+	int					p;
+	int					q;
+	int					r;
+	int					s;
+	int					num_rnds;
+}						t_flag;
+
 void					ft_md5(uint32_t *istr, size_t len);
 uint32_t				ft_left_rotate(uint32_t f, uint32_t s);
 uint32_t				*ft_from_8_to_32(unsigned char *str, size_t len);
 void					ft_print_md5(t_md5 *md5);
+
+void		ft_sha256(uint32_t *istr, size_t len);
+int			ft_help_sha256(uint32_t *istr, int j);
+uint32_t 	ft_right_rotate(uint32_t f, uint32_t s);
+uint32_t	*ft_from_8_to_32_sha256(unsigned char *str, size_t len);
 
 
 void	print_bits_32(uint32_t octet);

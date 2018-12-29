@@ -89,6 +89,9 @@
 		<Unit filename="/home/arh/study/ft_sslf/md5.c">
 			<Option target="ft_ssl"/>
 		</Unit>
+		<Unit filename="/home/arh/study/ft_sslf/sha256.c">
+			<Option target="ft_ssl"/>
+		</Unit>
 		<Unit filename="/home/arh/study/ft_sslf/ss_ssl.h">
 			<Option target="ft_ssl"/>
 		</Unit>
