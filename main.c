@@ -2,39 +2,12 @@
 
 size_t			num_bytes(char *str)
 {
-	size_t		len;
+	size_t			len;
 
 	len = ft_strlen(str) + 1;
 	while (len * 8 % 512 != 0)
 		len++;
 	return (len);
-}
-
-void			ft_parser_flags(t_flag *flags, int argc, char **argv)
-{
-	int			i;
-
-	i = 2;
-	flags->num_rnds = 0;
-	flags->s = 0;
-	flags->r = 0;
-	flags->q = 0;
-	flags->p = 0;
-	while (i < argc)
-	{
-		if (ft_strcmp(argv[i], "-p") == 0)
-		{
-			flags->p = 1;
-			flags->num_rnds++;
-		}
-		else if (ft_strcmp(argv[i], "-q") == 0)
-			flags->q = 1;
-		else if (ft_strcmp(argv[i], "-r") == 0)
-			flags->r = 1;
-		else if (ft_strcmp(argv[i], "-s") == 0)
-			flags->s = 1;
-		i++;
-	}
 }
 
 unsigned char	*ft_append_sha256(unsigned char *str, uint64_t str_len,
@@ -69,7 +42,7 @@ unsigned char	*ft_append(unsigned char *str, uint64_t str_len,
 	return (str);
 }
 
-void			ft_do_md5_or_sha256(char *str, int what)
+void			ft_do_md5_or_sha256(char *str, t_flag *flags, int what)
 {
 	size_t			byte_len;
 	uint64_t		str_bits;
@@ -85,7 +58,7 @@ void			ft_do_md5_or_sha256(char *str, int what)
 	{
 		res_bits = ft_append(res_bits, str_bits, byte_len);
 		istr = ft_from_8_to_32(res_bits, byte_len);
-		ft_md5(istr, byte_len);
+		ft_md5(istr, byte_len, flags);
 	}
 	else if (what == 2)
 	{
@@ -93,6 +66,60 @@ void			ft_do_md5_or_sha256(char *str, int what)
 		istr = ft_from_8_to_32_sha256(res_bits, byte_len);
 		ft_sha256(istr, byte_len);
 	}
+}
+
+void			ft_parser_flags(t_flag *flags, int argc, char **argv)
+{
+	flags->ite = 2;
+	flags->s = 0;
+	flags->r = 0;
+	flags->q = 0;
+	flags->p = 0;
+	while (flags->ite < argc)
+	{
+		if (ft_strcmp(argv[flags->ite], "-p") == 0)
+			flags->p = 1;
+		else if (ft_strcmp(argv[flags->ite], "-q") == 0)
+			flags->q = 1;
+		else if (ft_strcmp(argv[flags->ite], "-r") == 0)
+			flags->r = 1;
+		else if (ft_strcmp(argv[flags->ite], "-s") == 0)
+		{
+			flags->ite += 2;
+			flags->s = flags->ite - 1;
+			break ;
+		}
+		flags->ite++;
+	}
+}
+
+
+void			ft_go_with_flags(t_flag *flags, int argc, char **argv)
+{
+	if (argc == 2 || flags->p)
+	{
+		new_gnl(0, &flags->str);
+		if (argc == 2)
+			flags->p = 2;
+		ft_do_md5_or_sha256(flags->str, flags, 1);
+		flags->p = 0;
+	}
+	else if (flags->s)
+	{
+		flags->str = (char *)malloc(ft_strlen(argv[flags->s]) + 1);
+		ft_bzero(flags->str, ft_strlen(argv[flags->s]) + 1);
+		ft_memcpy(flags->str, argv[flags->s], ft_strlen(argv[flags->s]));
+		ft_do_md5_or_sha256(argv[flags->s], flags, 1);
+		flags->s = 0;
+	}
+	else
+	{
+		if ((flags->fd = open(argv[flags->ite - 1], O_RDONLY)) == -1)
+			ft_error();
+		new_gnl(flags->fd, &flags->str);
+		ft_do_md5_or_sha256(flags->str, flags, 1);
+	}
+
 }
 
 int				main(int argc, char **argv)
@@ -104,10 +131,18 @@ int				main(int argc, char **argv)
 	else if (argc > 1)
 	{
 		ft_parser_flags(&flags, argc, argv);
-		if (ft_strcmp(argv[1], "md5") == 0)
-			ft_do_md5_or_sha256(argv[2], 1);
-		else if (ft_strcmp(argv[1], "sha256") == 0)
-			ft_do_md5_or_sha256(argv[2], 2);
+		if ((ft_strcmp(argv[1], "md5") == 0) || (ft_strcmp(argv[1], "sha256") == 0))
+		{
+			while (flags.ite <= argc || flags.p || flags.s)
+			{
+//				ft_printf("ite=%d %d\n", flags.ite, argc);
+				if (flags.p)
+					flags.ite--;
+				ft_go_with_flags(&flags, argc, argv);
+				flags.ite++;
+			}
+		}
 	}
+
 	return (0);
 }

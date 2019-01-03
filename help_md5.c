@@ -25,3 +25,21 @@ void	print_bits_32(uint32_t octet)
 	}
 	write(1, "\n", 1);
 }
+
+void	new_gnl(const int fd, char **line)
+{
+	ssize_t		ex;
+	char		bif[2];
+	char		*tmp;
+	char		*str;
+
+	str = ft_strdup("");
+	while ((ex = read(fd, bif, 1)) > 0)
+	{
+		bif[ex] = '\0';
+		tmp = str;
+		str = ft_strjoin(str, bif);
+		free(tmp);
+	}
+	*line = str;
+}

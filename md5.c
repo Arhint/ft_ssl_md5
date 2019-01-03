@@ -93,7 +93,7 @@ void		ft_algo2_md5(t_md5 *md5, uint32_t *istr)
 	md5->blocks--;
 }
 
-void		ft_md5(uint32_t *istr, size_t len)
+void		ft_md5(uint32_t *istr, size_t len, t_flag *flags)
 {
 	t_md5			*md5;
 	int				i;
@@ -107,7 +107,7 @@ void		ft_md5(uint32_t *istr, size_t len)
 		i += 16;
 	}
 	free(istr);
-	ft_print_md5(md5);
+	ft_print_md5(md5, flags);
 	free(md5);
 }
 
@@ -116,10 +116,16 @@ uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
 	return ((f << s) | (f >> (32 - s)));
 }
 
-void		ft_print_md5(t_md5 *md5)
+void		ft_print_md5(t_md5 *md5, t_flag *flags)
 {
 	uint8_t		*res;
 
+	if (flags->p == 1)
+		printf("%s", flags->str);
+	if (!flags->p && !flags->r && !flags->q && flags->s)
+		ft_printf("MD5 (\"%s\") = ", flags->str);
+	else if (!flags->p && !flags->r && !flags->q)
+		ft_printf("MD5 (%s) = ", flags->str);
 	res = (uint8_t *)&md5->a;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
 	res = (uint8_t *)&md5->b;
@@ -127,7 +133,13 @@ void		ft_print_md5(t_md5 *md5)
 	res = (uint8_t *)&md5->c;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
 	res = (uint8_t *)&md5->d;
-	ft_printf("%02x%02x%02x%02x\n", res[0], res[1], res[2], res[3]);
+	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	if (flags->r && !flags->p && !flags->q && flags->s)
+		ft_printf(" \"%s\"", flags->str);
+	else if (!flags->p && flags->r && !flags->q)
+		ft_printf(" %s", flags->str);
+	ft_printf("\n");
+	free(flags->str);
 }
 
 uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
