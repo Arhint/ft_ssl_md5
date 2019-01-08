@@ -26,7 +26,7 @@ void	print_bits_32(uint32_t octet)
 	write(1, "\n", 1);
 }
 
-void	new_gnl(const int fd, char **line)
+void	new_gnl(int fd, char **line)
 {
 	ssize_t		ex;
 	char		bif[2];

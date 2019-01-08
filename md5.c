@@ -69,7 +69,7 @@ void		ft_algo_md5(t_md5 *md5, int i)
 
 void		ft_algo2_md5(t_md5 *md5, uint32_t *istr)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < 64)
@@ -93,12 +93,15 @@ void		ft_algo2_md5(t_md5 *md5, uint32_t *istr)
 	md5->blocks--;
 }
 
-void		ft_md5(uint32_t *istr, size_t len, t_flag *flags)
+void			ft_md5(unsigned char *res_bits,
+						size_t len, t_flag *flags, char **argv)
 {
-	t_md5			*md5;
-	int				i;
+	t_md5		*md5;
+	int			i;
+	uint32_t	*istr;
 
 	i = 0;
+	istr = ft_from_8_to_32(res_bits, len);
 	md5 = (t_md5 *)malloc(sizeof(t_md5));
 	init_md5(md5, len);
 	while (md5->blocks)
@@ -107,7 +110,7 @@ void		ft_md5(uint32_t *istr, size_t len, t_flag *flags)
 		i += 16;
 	}
 	free(istr);
-	ft_print_md5(md5, flags);
+	ft_print_md5(md5, flags, argv);
 	free(md5);
 }
 
@@ -116,28 +119,28 @@ uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
 	return ((f << s) | (f >> (32 - s)));
 }
 
-void		ft_print_md5(t_md5 *md5, t_flag *flags)
+void		ft_print_md5(t_md5 *md5, t_flag *flags, char **argv)
 {
-	uint8_t		*res;
+	uint8_t	*res;
 
 	if (flags->p == 1)
-		printf("%s", flags->str);
+		ft_printf("%s", flags->str);
 	if (!flags->p && !flags->r && !flags->q && flags->s)
-		ft_printf("MD5 (\"%s\") = ", flags->str);
+		ft_printf("MD5 (\"%s\") = ", argv[flags->ite]);
 	else if (!flags->p && !flags->r && !flags->q)
-		ft_printf("MD5 (%s) = ", flags->str);
-	res = (uint8_t *)&md5->a;
+		ft_printf("MD5 (%s) = ", argv[flags->ite]);
+	res = (uint8_t *) &md5->a;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *)&md5->b;
+	res = (uint8_t *) &md5->b;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *)&md5->c;
+	res = (uint8_t *) &md5->c;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *)&md5->d;
+	res = (uint8_t *) &md5->d;
 	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
 	if (flags->r && !flags->p && !flags->q && flags->s)
-		ft_printf(" \"%s\"", flags->str);
+		ft_printf(" \"%s\"", argv[flags->ite]);
 	else if (!flags->p && flags->r && !flags->q)
-		ft_printf(" %s", flags->str);
+		ft_printf(" %s", argv[flags->ite]);
 	ft_printf("\n");
 	free(flags->str);
 }

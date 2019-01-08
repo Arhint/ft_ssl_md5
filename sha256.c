@@ -90,18 +90,33 @@ void		ft_algo_sha256(t_s256 *sha, uint32_t *istr)
 	sha->h = sha->h7;
 }
 
-void		ft_print_sha256(t_s256 *sha)
+void		ft_print_sha256(t_s256 *sha, t_flag *flags, char **argv)
 {
-	ft_printf("%x%x%x%x%x%x%x%x\n", sha->h0, sha->h1, sha->h2, sha->h3,
+	if (flags->p == 1)
+		ft_printf("%s", flags->str);
+	if (!flags->p && !flags->r && !flags->q && flags->s)
+		ft_printf("SHA256 (\"%s\") = ", argv[flags->ite]);
+	else if (!flags->p && !flags->r && !flags->q)
+		ft_printf("SHA256 (%s) = ", argv[flags->ite]);
+	ft_printf("%x%x%x%x%x%x%x%x", sha->h0, sha->h1, sha->h2, sha->h3,
 			sha->h4, sha->h5, sha->h6, sha->h7);
+	if (flags->r && !flags->p && !flags->q && flags->s)
+		ft_printf(" \"%s\"", argv[flags->ite]);
+	else if (!flags->p && flags->r && !flags->q)
+		ft_printf(" %s", argv[flags->ite]);
+	ft_printf("\n");
+	free(flags->str);
 }
 
-void		ft_sha256(uint32_t *istr, size_t len)
+void		ft_sha256(unsigned char *res_bits,
+						size_t len, t_flag *flags, char **argv)
 {
 	t_s256			sha;
 	int				i;
+	uint32_t		*istr;
 
 	i = 0;
+	istr = ft_from_8_to_32_sha256(res_bits, len);
 	init_sha256(&sha, len);
 	while (sha.blocks)
 	{
@@ -110,7 +125,7 @@ void		ft_sha256(uint32_t *istr, size_t len)
 		sha.blocks--;
 	}
 	free(istr);
-	ft_print_sha256(&sha);
+	ft_print_sha256(&sha, flags, argv);
 }
 
 uint32_t	*ft_from_8_to_32_sha256(unsigned char *str, size_t len)
@@ -132,7 +147,6 @@ uint32_t	*ft_from_8_to_32_sha256(unsigned char *str, size_t len)
 		istr[j] = istr[j] | str[i + 2];
 		istr[j] = (istr[j] << 8);
 		istr[j] = istr[j] | str[i + 3];
-
 		j++;
 		i += 4;
 		if (j % 64 == 16)

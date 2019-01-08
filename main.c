@@ -42,12 +42,12 @@ unsigned char	*ft_append(unsigned char *str, uint64_t str_len,
 	return (str);
 }
 
-void			ft_do_md5_or_sha256(char *str, t_flag *flags, int what)
+void			ft_do_md5_or_sha256(char *str, t_flag *flags,
+									int what, char **argv)
 {
 	size_t			byte_len;
 	uint64_t		str_bits;
 	unsigned char	*res_bits;
-	uint32_t		*istr;
 
 	str_bits = (uint64_t)ft_strlen(str);
 	byte_len = num_bytes(str);
@@ -57,14 +57,12 @@ void			ft_do_md5_or_sha256(char *str, t_flag *flags, int what)
 	if (what == 1)
 	{
 		res_bits = ft_append(res_bits, str_bits, byte_len);
-		istr = ft_from_8_to_32(res_bits, byte_len);
-		ft_md5(istr, byte_len, flags);
+		ft_md5(res_bits, byte_len, flags, argv);
 	}
 	else if (what == 2)
 	{
 		res_bits = ft_append_sha256(res_bits, str_bits, byte_len);
-		istr = ft_from_8_to_32_sha256(res_bits, byte_len);
-		ft_sha256(istr, byte_len);
+		ft_sha256(res_bits, byte_len, flags, argv);
 	}
 }
 
@@ -74,7 +72,10 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 	flags->s = 0;
 	flags->r = 0;
 	flags->q = 0;
+	if (argc == 2)
+		flags->q = 1;
 	flags->p = 0;
+	flags->files = 0;
 	while (flags->ite < argc)
 	{
 		if (ft_strcmp(argv[flags->ite], "-p") == 0)
@@ -84,42 +85,42 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 		else if (ft_strcmp(argv[flags->ite], "-r") == 0)
 			flags->r = 1;
 		else if (ft_strcmp(argv[flags->ite], "-s") == 0)
-		{
-			flags->ite += 2;
-			flags->s = flags->ite - 1;
+			flags->s = flags->ite + 1;
+		else
 			break ;
-		}
 		flags->ite++;
 	}
+	flags->files = argc - flags->ite;
+	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
+	ft_printf("what=%d\n", flags->what);
 }
 
 
-void			ft_go_with_flags(t_flag *flags, int argc, char **argv)
+void			ft_go_with_flags(t_flag *flags, char **argv)
 {
-	if (argc == 2 || flags->p)
-	{
-		new_gnl(0, &flags->str);
-		if (argc == 2)
-			flags->p = 2;
-		ft_do_md5_or_sha256(flags->str, flags, 1);
-		flags->p = 0;
-	}
-	else if (flags->s)
+	if (flags->s)
 	{
 		flags->str = (char *)malloc(ft_strlen(argv[flags->s]) + 1);
 		ft_bzero(flags->str, ft_strlen(argv[flags->s]) + 1);
 		ft_memcpy(flags->str, argv[flags->s], ft_strlen(argv[flags->s]));
-		ft_do_md5_or_sha256(argv[flags->s], flags, 1);
+		ft_do_md5_or_sha256(argv[flags->s], flags, flags->what, argv);
 		flags->s = 0;
+		flags->files--;
 	}
-	else
+	else if (flags->files > 0)
 	{
-		if ((flags->fd = open(argv[flags->ite - 1], O_RDONLY)) == -1)
-			ft_error();
+		if ((flags->fd = open(argv[flags->ite], O_RDONLY)) == -1)
+		{
+			ft_printf("ft_ssl: %s: %s: No such file or directory\n",
+					argv[1], argv[flags->ite]);
+			return ;
+		}
 		new_gnl(flags->fd, &flags->str);
-		ft_do_md5_or_sha256(flags->str, flags, 1);
+		ft_do_md5_or_sha256(flags->str, flags, flags->what, argv);
+		flags->files--;
+		if (!flags->files)
+			flags->files = -1;
 	}
-
 }
 
 int				main(int argc, char **argv)
@@ -133,16 +134,18 @@ int				main(int argc, char **argv)
 		ft_parser_flags(&flags, argc, argv);
 		if ((ft_strcmp(argv[1], "md5") == 0) || (ft_strcmp(argv[1], "sha256") == 0))
 		{
-			while (flags.ite <= argc || flags.p || flags.s)
+			if (flags.p || !flags.files)
 			{
-//				ft_printf("ite=%d %d\n", flags.ite, argc);
-				if (flags.p)
-					flags.ite--;
-				ft_go_with_flags(&flags, argc, argv);
+				new_gnl(0, &flags.str);
+				ft_do_md5_or_sha256(flags.str, &flags, flags.what, argv);
+				flags.p = 0;
+			}
+			while (flags.ite < argc)
+			{
+				ft_go_with_flags(&flags, argv);
 				flags.ite++;
 			}
 		}
 	}
-
 	return (0);
 }

@@ -2,7 +2,6 @@
 # define SS_SSL_H
 
 #include "libft/includes/libft.h"
-#include <stdio.h>
 #include <math.h>
 # include <stdint.h>
 
@@ -52,22 +51,26 @@ typedef					struct t_flag
 	int					s;
 	int					ite;
 	int					fd;
+	int					files;
+	int					what;
 	char				*str;
 }						t_flag;
 
-void					ft_md5(uint32_t *istr, size_t len, t_flag *flags);
+void			ft_md5(unsigned char *res_bits,
+								size_t len, t_flag *flags, char **argv);
 uint32_t				ft_left_rotate(uint32_t f, uint32_t s);
 uint32_t				*ft_from_8_to_32(unsigned char *str, size_t len);
-void					ft_print_md5(t_md5 *md5, t_flag *flags);
+void					ft_print_md5(t_md5 *md5, t_flag *flags, char **argv);
 
-void					ft_sha256(uint32_t *istr, size_t len);
+void					ft_sha256(unsigned char *res_bits,
+								size_t len, t_flag *flags, char **argv);
 int						ft_help_sha256(uint32_t *istr, int j);
 uint32_t 				ft_right_rotate(uint32_t f, uint32_t s);
 uint32_t				*ft_from_8_to_32_sha256(unsigned char *str, size_t len);
-void					new_gnl(const int fd, char **line);
+void					new_gnl(int fd, char **line);
 
 
-void				print_bits_32(uint32_t octet);
-void				print_bits(unsigned char octet);
+//void				print_bits_32(uint32_t octet);
+//void				print_bits(unsigned char octet);
 
 #endif
