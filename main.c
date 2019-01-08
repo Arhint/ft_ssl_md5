@@ -11,7 +11,7 @@ size_t			num_bytes(char *str)
 }
 
 unsigned char	*ft_append_sha256(unsigned char *str, uint64_t str_len,
-								size_t byte_len)
+		size_t byte_len)
 {
 	str[str_len] = 128;
 	str_len *= 8;
@@ -26,8 +26,7 @@ unsigned char	*ft_append_sha256(unsigned char *str, uint64_t str_len,
 	return (str);
 }
 
-unsigned char	*ft_append(unsigned char *str, uint64_t str_len,
-												size_t byte_len)
+unsigned char	*ft_append(unsigned char *str, uint64_t str_len, size_t byte_len)
 {
 	str[str_len] = 128;
 	str_len *= 8;
@@ -45,28 +44,13 @@ unsigned char	*ft_append(unsigned char *str, uint64_t str_len,
 void			ft_do_md5_or_sha256(char *str, t_flag *flags,
 									int what, char **argv)
 {
-	size_t			byte_len;
-	uint64_t		str_bits;
-	unsigned char	*res_bits;
-
-	str_bits = (uint64_t)ft_strlen(str);
-	byte_len = num_bytes(str);
-	res_bits = (unsigned char *)malloc(byte_len);
-	ft_bzero(res_bits, byte_len);
-	ft_memcpy(res_bits, str, str_bits);
 	if (what == 1)
-	{
-		res_bits = ft_append(res_bits, str_bits, byte_len);
-		ft_md5(res_bits, byte_len, flags, argv);
-	}
+		ft_md5(str, flags, argv);
 	else if (what == 2)
-	{
-		res_bits = ft_append_sha256(res_bits, str_bits, byte_len);
-		ft_sha256(res_bits, byte_len, flags, argv);
-	}
+		ft_sha256(str, flags, argv);
 }
 
-void			ft_parser_flags(t_flag *flags, int argc, char **argv)
+void			init_flags(t_flag *flags, int argc, char **argv)
 {
 	flags->ite = 2;
 	flags->s = 0;
@@ -75,11 +59,20 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 	if (argc == 2)
 		flags->q = 1;
 	flags->p = 0;
+	flags->c = 0;
 	flags->files = 0;
+	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
+}
+
+void			ft_parser_flags(t_flag *flags, int argc, char **argv)
+{
+	init_flags(flags, argc, argv);
 	while (flags->ite < argc)
 	{
 		if (ft_strcmp(argv[flags->ite], "-p") == 0)
 			flags->p = 1;
+		if (ft_strcmp(argv[flags->ite], "-c") == 0)
+			flags->c = 1;
 		else if (ft_strcmp(argv[flags->ite], "-q") == 0)
 			flags->q = 1;
 		else if (ft_strcmp(argv[flags->ite], "-r") == 0)
@@ -91,8 +84,6 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 		flags->ite++;
 	}
 	flags->files = argc - flags->ite;
-	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
-	ft_printf("what=%d\n", flags->what);
 }
 
 
@@ -123,12 +114,20 @@ void			ft_go_with_flags(t_flag *flags, char **argv)
 	}
 }
 
+int				ft_usage_ssl(char **argv)
+{
+	ft_printf("Command %s not found, did you mean: \n\n", argv[0]);
+	ft_printf("command \'./ft_ssl md5\' [flags] [file]\n");
+	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n");
+	return (0);
+}
+
 int				main(int argc, char **argv)
 {
 	t_flag			flags;
 
 	if (argc == 1)
-		return (0);
+		return (ft_usage_ssl(argv));
 	else if (argc > 1)
 	{
 		ft_parser_flags(&flags, argc, argv);

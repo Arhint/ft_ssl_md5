@@ -30,7 +30,7 @@ static const uint32_t k[64] = {
 		0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 };
 
-void	init_md5(t_md5 *md, size_t len)
+void	init_md5(t_md5 *md)
 {
 	md->a = 0x67452301;
 	md->b = 0xefcdab89;
@@ -40,7 +40,7 @@ void	init_md5(t_md5 *md, size_t len)
 	md->b0 = md->b;
 	md->c0 = md->c;
 	md->d0 = md->d;
-	md->blocks = (int)len / 64;
+	md->blocks = (int)md->byte_len / 64;
 }
 
 void		ft_algo_md5(t_md5 *md5, int i)
@@ -93,25 +93,28 @@ void		ft_algo2_md5(t_md5 *md5, uint32_t *istr)
 	md5->blocks--;
 }
 
-void			ft_md5(unsigned char *res_bits,
-						size_t len, t_flag *flags, char **argv)
+void			ft_md5(char *str, t_flag *flags, char **argv)
 {
-	t_md5		*md5;
+	t_md5		md5;
 	int			i;
 	uint32_t	*istr;
 
 	i = 0;
-	istr = ft_from_8_to_32(res_bits, len);
-	md5 = (t_md5 *)malloc(sizeof(t_md5));
-	init_md5(md5, len);
-	while (md5->blocks)
+	md5.str_bits = (uint64_t)ft_strlen(str);
+	md5.byte_len = num_bytes(str);
+	md5.res_bits = (unsigned char *)malloc(md5.byte_len);
+	ft_bzero(md5.res_bits, md5.byte_len);
+	ft_memcpy(md5.res_bits, str, md5.str_bits);
+	md5.res_bits = ft_append(md5.res_bits, md5.str_bits, md5.byte_len);
+	istr = ft_from_8_to_32(&md5);
+	init_md5(&md5);
+	while (md5.blocks)
 	{
-		ft_algo2_md5(md5, istr + i);
+		ft_algo2_md5(&md5, istr + i);
 		i += 16;
 	}
 	free(istr);
-	ft_print_md5(md5, flags, argv);
-	free(md5);
+	ft_print_md5(&md5, flags, argv);
 }
 
 uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
@@ -119,24 +122,42 @@ uint32_t 	ft_left_rotate(uint32_t f, uint32_t s)
 	return ((f << s) | (f >> (32 - s)));
 }
 
-void		ft_print_md5(t_md5 *md5, t_flag *flags, char **argv)
+void		ft_printh_md5(t_md5 *md5, t_flag *flags)
 {
 	uint8_t	*res;
 
+	res = (uint8_t *) &md5->a;
+	if (!flags->q && flags->c)
+	{
+		ft_printf("%02x:%02x:%02x:%02x:", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->b;
+		ft_printf("%02x:%02x:%02x:%02x:", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->c;
+		ft_printf("%02x:%02x:%02x:%02x:", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->d;
+		ft_printf("%02x:%02x:%02x:%02x", res[0], res[1], res[2], res[3]);
+	}
+	else
+	{
+		ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->b;
+		ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->c;
+		ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+		res = (uint8_t *) &md5->d;
+		ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	}
+}
+
+void		ft_print_md5(t_md5 *md5, t_flag *flags, char **argv)
+{
 	if (flags->p == 1)
 		ft_printf("%s", flags->str);
 	if (!flags->p && !flags->r && !flags->q && flags->s)
 		ft_printf("MD5 (\"%s\") = ", argv[flags->ite]);
 	else if (!flags->p && !flags->r && !flags->q)
 		ft_printf("MD5 (%s) = ", argv[flags->ite]);
-	res = (uint8_t *) &md5->a;
-	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *) &md5->b;
-	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *) &md5->c;
-	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
-	res = (uint8_t *) &md5->d;
-	ft_printf("%02x%02x%02x%02x", res[0], res[1], res[2], res[3]);
+	ft_printh_md5(md5, flags);
 	if (flags->r && !flags->p && !flags->q && flags->s)
 		ft_printf(" \"%s\"", argv[flags->ite]);
 	else if (!flags->p && flags->r && !flags->q)
@@ -145,7 +166,7 @@ void		ft_print_md5(t_md5 *md5, t_flag *flags, char **argv)
 	free(flags->str);
 }
 
-uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
+uint32_t		*ft_from_8_to_32(t_md5 *md5)
 {
 	uint32_t			*istr;
 	unsigned int		i;
@@ -153,20 +174,20 @@ uint32_t		*ft_from_8_to_32(unsigned char *str, size_t len)
 
 	i = 0;
 	j = 0;
-	istr = (uint32_t *) malloc(sizeof(uint32_t) * len / 4);
-	ft_bzero(istr, len);
-	while (i < len)
+	istr = (uint32_t *) malloc(sizeof(uint32_t) * md5->byte_len / 4);
+	ft_bzero(istr, md5->byte_len);
+	while (i < md5->byte_len)
 	{
-		istr[j] = istr[j] | str[i + 3];
+		istr[j] = istr[j] | md5->res_bits[i + 3];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i + 2];
+		istr[j] = istr[j] | md5->res_bits[i + 2];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i + 1];
+		istr[j] = istr[j] | md5->res_bits[i + 1];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i];
+		istr[j] = istr[j] | md5->res_bits[i];
 		j++;
 		i += 4;
 	}
-	free(str);
+	free(md5->res_bits);
 	return (istr);
 }

@@ -16,7 +16,7 @@ static const uint32_t z[64] = {
 		0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-void		init_sha256(t_s256 *sha, size_t len)
+void		init_sha256(t_s256 *sha)
 {
 	sha->a = 0x6a09e667;
 	sha->b = 0xbb67ae85;
@@ -34,7 +34,7 @@ void		init_sha256(t_s256 *sha, size_t len)
 	sha->h5 = sha->f;
 	sha->h6 = sha->g;
 	sha->h7 = sha->h;
-	sha->blocks = (int)len / 64;
+	sha->blocks = (int)sha->byte_len / 64;
 }
 
 void		ft_algo2_sha256(t_s256 *sha, uint32_t *istr, int i)
@@ -90,6 +90,28 @@ void		ft_algo_sha256(t_s256 *sha, uint32_t *istr)
 	sha->h = sha->h7;
 }
 
+void		ft_printh_sha256(t_s256 *sha)
+{
+	uint8_t	*res;
+
+	res = (uint8_t *) &sha->h0;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h1;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h2;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h3;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h4;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h5;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h6;
+	ft_printf("%02x:%02x:%02x:%02x:", res[3], res[2], res[1], res[0]);
+	res = (uint8_t *) &sha->h7;
+	ft_printf("%02x:%02x:%02x:%02x", res[3], res[2], res[1], res[0]);
+}
+
 void		ft_print_sha256(t_s256 *sha, t_flag *flags, char **argv)
 {
 	if (flags->p == 1)
@@ -98,8 +120,11 @@ void		ft_print_sha256(t_s256 *sha, t_flag *flags, char **argv)
 		ft_printf("SHA256 (\"%s\") = ", argv[flags->ite]);
 	else if (!flags->p && !flags->r && !flags->q)
 		ft_printf("SHA256 (%s) = ", argv[flags->ite]);
-	ft_printf("%x%x%x%x%x%x%x%x", sha->h0, sha->h1, sha->h2, sha->h3,
-			sha->h4, sha->h5, sha->h6, sha->h7);
+	if (!flags->q && flags->c)
+		ft_printh_sha256(sha);
+	else
+		ft_printf("%x%x%x%x%x%x%x%x", sha->h0, sha->h1, sha->h2, sha->h3,
+				  sha->h4, sha->h5, sha->h6, sha->h7);
 	if (flags->r && !flags->p && !flags->q && flags->s)
 		ft_printf(" \"%s\"", argv[flags->ite]);
 	else if (!flags->p && flags->r && !flags->q)
@@ -108,16 +133,21 @@ void		ft_print_sha256(t_s256 *sha, t_flag *flags, char **argv)
 	free(flags->str);
 }
 
-void		ft_sha256(unsigned char *res_bits,
-						size_t len, t_flag *flags, char **argv)
+void		ft_sha256(char *str, t_flag *flags, char **argv)
 {
 	t_s256			sha;
 	int				i;
 	uint32_t		*istr;
 
 	i = 0;
-	istr = ft_from_8_to_32_sha256(res_bits, len);
-	init_sha256(&sha, len);
+	sha.str_bits = (uint64_t)ft_strlen(str);
+	sha.byte_len = num_bytes(str);
+	sha.res_bits = (unsigned char *)malloc(sha.byte_len);
+	ft_bzero(sha.res_bits, sha.byte_len);
+	ft_memcpy(sha.res_bits, str, sha.str_bits);
+	sha.res_bits = ft_append_sha256(sha.res_bits, sha.str_bits, sha.byte_len);
+	istr = ft_from_8_to_32_sha256(&sha);
+	init_sha256(&sha);
 	while (sha.blocks)
 	{
 		ft_algo_sha256(&sha, istr + i);
@@ -128,7 +158,7 @@ void		ft_sha256(unsigned char *res_bits,
 	ft_print_sha256(&sha, flags, argv);
 }
 
-uint32_t	*ft_from_8_to_32_sha256(unsigned char *str, size_t len)
+uint32_t	*ft_from_8_to_32_sha256(t_s256 *sha)
 {
 	uint32_t			*istr;
 	unsigned int		i;
@@ -136,23 +166,23 @@ uint32_t	*ft_from_8_to_32_sha256(unsigned char *str, size_t len)
 
 	i = 0;
 	j = 0;
-	istr = (uint32_t *) malloc(sizeof(uint32_t) * len);
-	ft_bzero(istr, len);
-	while (i < len)
+	istr = (uint32_t *) malloc(sizeof(uint32_t) * sha->byte_len);
+	ft_bzero(istr, sha->byte_len);
+	while (i < sha->byte_len)
 	{
-		istr[j] = istr[j] | str[i];
+		istr[j] = istr[j] | sha->res_bits[i];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i + 1];
+		istr[j] = istr[j] | sha->res_bits[i + 1];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i + 2];
+		istr[j] = istr[j] | sha->res_bits[i + 2];
 		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | str[i + 3];
+		istr[j] = istr[j] | sha->res_bits[i + 3];
 		j++;
 		i += 4;
 		if (j % 64 == 16)
 			j = ft_help_sha256(istr, j);
 	}
-	free(str);
+	free(sha->res_bits);
 	return (istr);
 }
 

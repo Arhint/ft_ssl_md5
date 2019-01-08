@@ -18,6 +18,9 @@ typedef					struct	s_md5
 	uint32_t			f;
 	int					g;
 	int					blocks;
+	unsigned char		*res_bits;
+	uint64_t			str_bits;
+	size_t				byte_len;
 }						t_md5;
 
 typedef					struct	s_s256
@@ -41,6 +44,9 @@ typedef					struct	s_s256
 	uint32_t			tmp1;
 	uint32_t			tmp2;
 	int					blocks;
+	unsigned char		*res_bits;
+	uint64_t			str_bits;
+	size_t				byte_len;
 }						t_s256;
 
 typedef					struct t_flag
@@ -49,6 +55,7 @@ typedef					struct t_flag
 	int					q;
 	int					r;
 	int					s;
+	int					c;
 	int					ite;
 	int					fd;
 	int					files;
@@ -56,18 +63,20 @@ typedef					struct t_flag
 	char				*str;
 }						t_flag;
 
-void			ft_md5(unsigned char *res_bits,
-								size_t len, t_flag *flags, char **argv);
+void					ft_md5(char *str, t_flag *flags, char **argv);
 uint32_t				ft_left_rotate(uint32_t f, uint32_t s);
-uint32_t				*ft_from_8_to_32(unsigned char *str, size_t len);
+uint32_t				*ft_from_8_to_32(t_md5 *md5);
 void					ft_print_md5(t_md5 *md5, t_flag *flags, char **argv);
+size_t					num_bytes(char *str);
+unsigned char			*ft_append(unsigned char *str, uint64_t str_len, size_t byte_len);
 
-void					ft_sha256(unsigned char *res_bits,
-								size_t len, t_flag *flags, char **argv);
+void					ft_sha256(char *str, t_flag *flags, char **argv);
 int						ft_help_sha256(uint32_t *istr, int j);
 uint32_t 				ft_right_rotate(uint32_t f, uint32_t s);
-uint32_t				*ft_from_8_to_32_sha256(unsigned char *str, size_t len);
+uint32_t				*ft_from_8_to_32_sha256(t_s256 *sha);
 void					new_gnl(int fd, char **line);
+unsigned char			*ft_append_sha256(unsigned char *str, uint64_t str_len,
+								   size_t byte_len);
 
 
 //void				print_bits_32(uint32_t octet);
