@@ -1,44 +1,34 @@
-#include "ss_ssl.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssavchen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/09 14:47:02 by ssavchen          #+#    #+#             */
+/*   Updated: 2019/01/09 17:17:46 by ssavchen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t			num_bytes(char *str)
+#include "ft_ssl.h"
+
+size_t			num_bytes(char *str, int algo)
 {
 	size_t			len;
 
-	len = ft_strlen(str) + 1;
-	while (len * 8 % 512 != 0)
-		len++;
+	len = ft_strlen(str) + 9;
+	if (algo == 256)
+	{
+		while (len * 8 % 512 != 0)
+			len++;
+	}
+	else if (algo == 512)
+	{
+		len += 8;
+		while (len * 8 % 1024 != 0)
+			len++;
+	}
 	return (len);
-}
-
-unsigned char	*ft_append_sha256(unsigned char *str, uint64_t str_len,
-		size_t byte_len)
-{
-	str[str_len] = 128;
-	str_len *= 8;
-	str[byte_len - 1] = (unsigned char)(str_len & 0xFF);
-	str[byte_len - 2] = (unsigned char)(str_len >> 8 & 0xFF);
-	str[byte_len - 3] = (unsigned char)(str_len >> 16 & 0xFF);
-	str[byte_len - 4] = (unsigned char)(str_len >> 24 & 0xFF);
-	str[byte_len - 5] = (unsigned char)(str_len >> 32 & 0xFF);
-	str[byte_len - 6] = (unsigned char)(str_len >> 40 & 0xFF);
-	str[byte_len - 7] = (unsigned char)(str_len >> 48 & 0xFF);
-	str[byte_len - 8] = (unsigned char)(str_len >> 56 & 0xFF);
-	return (str);
-}
-
-unsigned char	*ft_append(unsigned char *str, uint64_t str_len, size_t byte_len)
-{
-	str[str_len] = 128;
-	str_len *= 8;
-	str[byte_len - 8] = (unsigned char)(str_len & 0xFF);
-	str[byte_len - 7] = (unsigned char)(str_len >> 8 & 0xFF);
-	str[byte_len - 6] = (unsigned char)(str_len >> 16 & 0xFF);
-	str[byte_len - 5] = (unsigned char)(str_len >> 24 & 0xFF);
-	str[byte_len - 4] = (unsigned char)(str_len >> 32 & 0xFF);
-	str[byte_len - 3] = (unsigned char)(str_len >> 40 & 0xFF);
-	str[byte_len - 2] = (unsigned char)(str_len >> 48 & 0xFF);
-	str[byte_len - 1] = (unsigned char)(str_len >> 56 & 0xFF);
-	return (str);
 }
 
 void			ft_do_md5_or_sha256(char *str, t_flag *flags,
@@ -71,7 +61,7 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 	{
 		if (ft_strcmp(argv[flags->ite], "-p") == 0)
 			flags->p = 1;
-		if (ft_strcmp(argv[flags->ite], "-c") == 0)
+		else if (ft_strcmp(argv[flags->ite], "-c") == 0)
 			flags->c = 1;
 		else if (ft_strcmp(argv[flags->ite], "-q") == 0)
 			flags->q = 1;
@@ -86,7 +76,6 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 	flags->files = argc - flags->ite;
 }
 
-
 void			ft_go_with_flags(t_flag *flags, char **argv)
 {
 	if (flags->s)
@@ -100,7 +89,7 @@ void			ft_go_with_flags(t_flag *flags, char **argv)
 	}
 	else if (flags->files > 0)
 	{
-		if ((flags->fd = open(argv[flags->ite], O_RDONLY)) == -1)
+		if ((flags->fd = open(argv[flags->ite], O_RDONLY | O_EXCL)) < 0)
 		{
 			ft_printf("ft_ssl: %s: %s: No such file or directory\n",
 					argv[1], argv[flags->ite]);
@@ -118,7 +107,7 @@ int				ft_usage_ssl(char **argv)
 {
 	ft_printf("Command %s not found, did you mean: \n\n", argv[0]);
 	ft_printf("command \'./ft_ssl md5\' [flags] [file]\n");
-	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n");
+	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n\n");
 	return (0);
 }
 
@@ -131,7 +120,8 @@ int				main(int argc, char **argv)
 	else if (argc > 1)
 	{
 		ft_parser_flags(&flags, argc, argv);
-		if ((ft_strcmp(argv[1], "md5") == 0) || (ft_strcmp(argv[1], "sha256") == 0))
+		if ((ft_strcmp(argv[1], "md5") == 0) ||
+				(ft_strcmp(argv[1], "sha256") == 0))
 		{
 			if (flags.p || !flags.files)
 			{

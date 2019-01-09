@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/57/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/57/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arh/study/ft_sslf
+CMAKE_SOURCE_DIR = /Users/ssavchen/ft_ssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arh/study/ft_sslf/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ssavchen/ft_ssl/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/arh/study/ft_sslf/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/57/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/57/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles /Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -149,6 +149,33 @@ help_md5.s: help_md5.c.s
 help_md5.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_md5.c.s
 .PHONY : help_md5.c.s
+
+help_sha256.o: help_sha256.c.o
+
+.PHONY : help_sha256.o
+
+# target to build an object file
+help_sha256.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha256.c.o
+.PHONY : help_sha256.c.o
+
+help_sha256.i: help_sha256.c.i
+
+.PHONY : help_sha256.i
+
+# target to preprocess a source file
+help_sha256.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha256.c.i
+.PHONY : help_sha256.c.i
+
+help_sha256.s: help_sha256.c.s
+
+.PHONY : help_sha256.s
+
+# target to generate assembly for a file
+help_sha256.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha256.c.s
+.PHONY : help_sha256.c.s
 
 main.o: main.c.o
 
@@ -231,6 +258,33 @@ sha256.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha256.c.s
 .PHONY : sha256.c.s
 
+sha512.o: sha512.c.o
+
+.PHONY : sha512.o
+
+# target to build an object file
+sha512.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha512.c.o
+.PHONY : sha512.c.o
+
+sha512.i: sha512.c.i
+
+.PHONY : sha512.i
+
+# target to preprocess a source file
+sha512.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha512.c.i
+.PHONY : sha512.c.i
+
+sha512.s: sha512.c.s
+
+.PHONY : sha512.s
+
+# target to generate assembly for a file
+sha512.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha512.c.s
+.PHONY : sha512.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,11 +292,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... ft_ssl"
 	@echo "... edit_cache"
+	@echo "... ft_ssl"
 	@echo "... help_md5.o"
 	@echo "... help_md5.i"
 	@echo "... help_md5.s"
+	@echo "... help_sha256.o"
+	@echo "... help_sha256.i"
+	@echo "... help_sha256.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -252,6 +309,9 @@ help:
 	@echo "... sha256.o"
 	@echo "... sha256.i"
 	@echo "... sha256.s"
+	@echo "... sha512.o"
+	@echo "... sha512.i"
+	@echo "... sha512.s"
 .PHONY : help
 
 

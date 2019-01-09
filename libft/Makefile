@@ -29,16 +29,18 @@ OBJ =	$(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "\033[0;32mCreate libft.a\033[0m"
 
 %.o: %.c
-	gcc -c $(FLG) -o $@ $<
+	@gcc -c $(FLG) -o $@ $<
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
+	@echo "\033[0;31mdelete:" $(NAME) "\033[0m"
 
 re: fclean all
