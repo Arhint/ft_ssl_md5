@@ -38,6 +38,8 @@ void			ft_do_md5_or_sha256(char *str, t_flag *flags,
 		ft_md5(str, flags, argv);
 	else if (what == 2)
 		ft_sha256(str, flags, argv);
+	else if (what == 3)
+		ft_sha512(str, flags, argv);
 }
 
 void			init_flags(t_flag *flags, int argc, char **argv)
@@ -51,7 +53,13 @@ void			init_flags(t_flag *flags, int argc, char **argv)
 	flags->p = 0;
 	flags->c = 0;
 	flags->files = 0;
-	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
+//	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
+	if (ft_strcmp(argv[1], "sha512") == 0)
+		flags->what = 3;
+	else if (ft_strcmp(argv[1], "md5") == 0)
+		flags->what = 1;
+	else if (ft_strcmp(argv[1], "sha256") == 0)
+		flags->what = 2;
 }
 
 void			ft_parser_flags(t_flag *flags, int argc, char **argv)
@@ -121,7 +129,7 @@ int				main(int argc, char **argv)
 	{
 		ft_parser_flags(&flags, argc, argv);
 		if ((ft_strcmp(argv[1], "md5") == 0) ||
-				(ft_strcmp(argv[1], "sha256") == 0))
+				(ft_strcmp(argv[1], "sha256") == 0) || (ft_strcmp(argv[1], "sha512") == 0))
 		{
 			if (flags.p || !flags.files)
 			{
