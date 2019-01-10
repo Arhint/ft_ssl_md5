@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/ssavchen/ft_ssl/help_md5.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/help_md5.c.o"
-  "/Users/ssavchen/ft_ssl/help_sha256.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/help_sha256.c.o"
-  "/Users/ssavchen/ft_ssl/main.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/main.c.o"
-  "/Users/ssavchen/ft_ssl/md5.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/md5.c.o"
-  "/Users/ssavchen/ft_ssl/sha256.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/sha256.c.o"
-  "/Users/ssavchen/ft_ssl/sha512.c" "/Users/ssavchen/ft_ssl/cmake-build-debug/CMakeFiles/ft_ssl.dir/sha512.c.o"
+  "/home/arh/study/ft_sslf/help_md5.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/help_md5.c.o"
+  "/home/arh/study/ft_sslf/help_sha256.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/help_sha256.c.o"
+  "/home/arh/study/ft_sslf/main.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/main.c.o"
+  "/home/arh/study/ft_sslf/md5.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/md5.c.o"
+  "/home/arh/study/ft_sslf/sha256.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/sha256.c.o"
+  "/home/arh/study/ft_sslf/sha512.c" "/home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/ft_ssl.dir/sha512.c.o"
   )
-set(CMAKE_C_COMPILER_ID "AppleClang")
+set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
