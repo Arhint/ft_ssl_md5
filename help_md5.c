@@ -47,12 +47,9 @@ uint32_t		*ft_from_8_to_32(t_md5 *md5)
 	ft_bzero(istr, md5->byte_len);
 	while (i < md5->byte_len)
 	{
-		istr[j] = istr[j] | md5->res_bits[i + 3];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | md5->res_bits[i + 2];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | md5->res_bits[i + 1];
-		istr[j] = (istr[j] << 8);
+		istr[j] = (istr[j] | md5->res_bits[i + 3]) << 8;
+		istr[j] = (istr[j] | md5->res_bits[i + 2]) << 8;
+		istr[j] = (istr[j] | md5->res_bits[i + 1]) << 8;
 		istr[j] = istr[j] | md5->res_bits[i];
 		j++;
 		i += 4;

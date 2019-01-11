@@ -24,12 +24,9 @@ uint32_t	*ft_from_8_to_32_sha256(t_s256 *sha)
 	ft_bzero(istr, sha->byte_len);
 	while (i < sha->byte_len)
 	{
-		istr[j] = istr[j] | sha->res_bits[i];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 1];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 2];
-		istr[j] = (istr[j] << 8);
+		istr[j] = (istr[j] | sha->res_bits[i]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 1]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 2]) << 8;
 		istr[j] = istr[j] | sha->res_bits[i + 3];
 		j++;
 		i += 4;

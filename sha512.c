@@ -55,7 +55,6 @@ void			init_sha512(t_s512 *sha)
 	sha->h6 = sha->g;
 	sha->h7 = sha->h;
 	sha->blocks = (int)sha->byte_len / 128;
-//	ft_printf("x16=%lx\n", sha->a);
 }
 
 int				ft_help_sha512(uint64_t *istr, int j)
@@ -78,33 +77,22 @@ int				ft_help_sha512(uint64_t *istr, int j)
 	return (j);
 }
 
-uint64_t	*ft_from_8_to_64_sha256(t_s512 *sha)
+uint64_t	*ft_from_8_to_64_sha256(t_s512 *sha, int i, int j)
 {
 	uint64_t			*istr;
-	int					i;
-	int					j;
 
-	i = 0;
-	j = 0;
 	sha->blocks = (int)sha->byte_len / 128;
 	istr = (uint64_t *)malloc(sizeof(uint64_t) * sha->blocks * 80);
 	ft_bzero(istr, (size_t)sha->blocks * 80);
 	while (j < sha->blocks * 80)
 	{
-		istr[j] = istr[j] | sha->res_bits[i];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 1];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 2];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 3];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 4];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 5];
-		istr[j] = (istr[j] << 8);
-		istr[j] = istr[j] | sha->res_bits[i + 6];
-		istr[j] = (istr[j] << 8);
+		istr[j] = (istr[j] | sha->res_bits[i]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 1]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 2]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 3]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 4]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 5]) << 8;
+		istr[j] = (istr[j] | sha->res_bits[i + 6]) << 8;
 		istr[j] = istr[j] | sha->res_bits[i + 7];
 		j++;
 		i += 8;
@@ -166,6 +154,34 @@ void			ft_algo_sha512(t_s512 *sha, uint64_t *istr)
 	sha->h = sha->h7;
 }
 
+void		ft_printh_sha512(t_s512 *sha, uint8_t *res)
+{
+	res = (uint8_t *)&sha->h0;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h1;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h2;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h3;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h4;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h5;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h6;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x:",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+	res = (uint8_t *)&sha->h7;
+	ft_printf("%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x",
+			res[7], res[6], res[5], res[4], res[3], res[2], res[1], res[0]);
+}
+
 void			ft_print_sha512(t_s512 *sha, t_flag *flags, char **argv)
 {
 	if (flags->p == 1)
@@ -174,9 +190,9 @@ void			ft_print_sha512(t_s512 *sha, t_flag *flags, char **argv)
 		ft_printf("SHA512 (\"%s\") = ", argv[flags->ite]);
 	else if (!flags->p && !flags->r && !flags->q)
 		ft_printf("SHA512 (%s) = ", argv[flags->ite]);
-//	if (!flags->q && flags->c)
-//		ft_printh_sha512(sha);
-//	else
+	if (!flags->q && flags->c)
+		ft_printh_sha512(sha, NULL);
+	else
 		ft_printf("%llx%lx%lx%lx%lx%lx%lx%lx", sha->h0, sha->h1, sha->h2, sha->h3,
 				  sha->h4, sha->h5, sha->h6, sha->h7);
 	if (flags->r && !flags->p && !flags->q && flags->s)
@@ -216,7 +232,7 @@ void			ft_sha512(char *str, t_flag *flags, char **argv)
 	ft_bzero(sha.res_bits, sha.byte_len);
 	ft_memcpy(sha.res_bits, str, sha.str_bits);
 	sha.res_bits = ft_append_sha512(sha.res_bits, sha.str_bits, sha.byte_len);
-	istr = ft_from_8_to_64_sha256(&sha);
+	istr = ft_from_8_to_64_sha256(&sha, 0, 0);
 	init_sha512(&sha);
 	while (sha.blocks)
 	{

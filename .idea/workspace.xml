@@ -13,96 +13,15 @@
   <component name="ChangeListManager">
     <list default="true" id="458942ae-f450-49db-a9ed-ad3f91ac3ff8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ft_ssl" beforeDir="false" afterPath="$PROJECT_DIR$/ft_ssl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ft_ssl.h" beforeDir="false" afterPath="$PROJECT_DIR$/ft_ssl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/help_md5.o" beforeDir="false" afterPath="$PROJECT_DIR$/help_md5.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/help_sha256.o" beforeDir="false" afterPath="$PROJECT_DIR$/help_sha256.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_atoi.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_atoi.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_blanks.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_blanks.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_bzero.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_count_words.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_count_words.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_error.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_error.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_isalnum.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isalnum.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_isalpha.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isalpha.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_isascii.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isascii.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_isdigit.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isdigit.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_isprint.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isprint.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_itoa.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_itoa.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_len_int.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_len_int.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstadd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstadd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstdel.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstdel.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstdelone.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstdelone.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstiter.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstiter.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstmap.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstmap.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_lstnew.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_lstnew.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_maxint.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_maxint.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memalloc.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memalloc.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memccpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memccpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memcmp.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memcmp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memcpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memcpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memdel.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memdel.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memmove.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memmove.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_memset.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_memset.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_atoll.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_atoll.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_create_flg.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_create_flg.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_doflagxo.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_doflagxo.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_itoa_base.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_itoa_base.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_c.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_di.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_di.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_flags.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_flags.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_o.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_o.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_p.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_p.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_s.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_s.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_u.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_u.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_print_x.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_print_x.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_printf.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_printf.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_printf/ft_printhelp_s.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_printf/ft_printhelp_s.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putchar.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putchar.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putchar_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putchar_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putendl.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putendl.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putendl_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putendl_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putnbr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putnbr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putnbr_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putnbr_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putstr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putstr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_putstr_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_putstr_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_sqrt.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_sqrt.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strcat.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strcat.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strclr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strclr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strcmp.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strcmp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strcpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strcpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strdel.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strdel.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strdup.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strdup.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strequ.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strequ.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_striter.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_striter.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_striteri.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_striteri.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strjoin.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strjoin.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strlcat.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strlcat.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strlen.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strlen.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strmap.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strmap.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strmapi.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strmapi.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strncat.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strncat.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strncmp.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strncmp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strncpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strncpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strnequ.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strnequ.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strnew.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strnew.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strnstr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strnstr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strrchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strrchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strsplit.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strsplit.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strstr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strstr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strsub.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strsub.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strtrim.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strtrim.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_swap.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_swap.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_tolower.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_tolower.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_toupper.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_toupper.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/get_next_line.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/get_next_line.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_ssl.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_ssl.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/help_md5.c" beforeDir="false" afterPath="$PROJECT_DIR$/help_md5.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/help_sha256.c" beforeDir="false" afterPath="$PROJECT_DIR$/help_sha256.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/md5.o" beforeDir="false" afterPath="$PROJECT_DIR$/md5.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sha256.o" beforeDir="false" afterPath="$PROJECT_DIR$/sha256.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sha512.c" beforeDir="false" afterPath="$PROJECT_DIR$/sha512.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -120,8 +39,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+                <state relative-caret-position="18">
+                  <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -138,7 +57,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sha256.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1409">
+                <state relative-caret-position="275">
                   <caret line="128" selection-start-line="128" selection-end-line="128" />
                 </state>
               </provider>
@@ -147,8 +66,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/help_sha256.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1553">
-                  <caret line="99" column="30" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+                <state relative-caret-position="581">
+                  <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -156,7 +75,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/md5.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="905">
+                <state relative-caret-position="1553">
                   <caret line="104" column="34" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
                 </state>
               </provider>
@@ -169,8 +88,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/sha512.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="351">
-                  <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
+                <state relative-caret-position="1352">
+                  <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -178,7 +97,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ft_ssl.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1193">
+                <state relative-caret-position="2214">
                   <caret line="123" column="54" selection-start-line="123" selection-start-column="54" selection-end-line="123" selection-end-column="54" />
                   <folding>
                     <element signature="e#928#962#0" expanded="true" />
@@ -190,8 +109,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/help_md5.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-855">
-                  <caret line="13" selection-start-line="13" selection-end-line="13" />
+                <state relative-caret-position="-9">
+                  <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -210,14 +129,14 @@
         <option value="$PROJECT_DIR$/libft/get_next_line.c" />
         <option value="$PROJECT_DIR$/libft/ft_strjoin.c" />
         <option value="$PROJECT_DIR$/ss_ssl.h" />
-        <option value="$PROJECT_DIR$/help_sha256.c" />
-        <option value="$PROJECT_DIR$/help_md5.c" />
         <option value="$PROJECT_DIR$/md5.c" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/ft_ssl.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/sha256.c" />
+        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/sha512.c" />
+        <option value="$PROJECT_DIR$/help_md5.c" />
+        <option value="$PROJECT_DIR$/help_sha256.c" />
       </list>
     </option>
   </component>
@@ -233,6 +152,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -244,7 +164,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,12 +237,13 @@
       <workItem from="1546934342568" duration="19611000" />
       <workItem from="1547033534591" duration="3069000" />
       <workItem from="1547037935789" duration="8082000" />
-      <workItem from="1547107200749" duration="6828000" />
+      <workItem from="1547107200749" duration="7390000" />
+      <workItem from="1547193914756" duration="2032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173929000" />
+    <option name="totallyTimeSpent" value="176523000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,9 +256,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1870" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.100877196" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10197368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -456,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ft_ssl.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1193">
+        <state relative-caret-position="2214">
           <caret line="123" column="54" selection-start-line="123" selection-start-column="54" selection-end-line="123" selection-end-column="54" />
           <folding>
             <element signature="e#928#962#0" expanded="true" />
@@ -464,45 +383,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/md5.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="905">
-          <caret line="104" column="34" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        <state relative-caret-position="18">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sha256.c">
+    <entry file="file://$PROJECT_DIR$/md5.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1409">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        <state relative-caret-position="1553">
+          <caret line="104" column="34" selection-start-line="104" selection-start-column="34" selection-end-line="104" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/help_md5.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="-9">
+          <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sha512.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
+        <state relative-caret-position="1352">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sha256.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/help_sha256.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1553">
-          <caret line="99" column="30" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+        <state relative-caret-position="581">
+          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
         </state>
       </provider>
     </entry>

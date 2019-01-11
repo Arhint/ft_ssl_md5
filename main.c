@@ -53,7 +53,6 @@ void			init_flags(t_flag *flags, int argc, char **argv)
 	flags->p = 0;
 	flags->c = 0;
 	flags->files = 0;
-//	flags->what = (ft_strcmp(argv[1], "md5") == 0) ? 1 : 2;
 	if (ft_strcmp(argv[1], "sha512") == 0)
 		flags->what = 3;
 	else if (ft_strcmp(argv[1], "md5") == 0)
