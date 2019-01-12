@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssavchen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:47:02 by ssavchen          #+#    #+#             */
-/*   Updated: 2019/01/09 17:17:46 by ssavchen         ###   ########.fr       */
+/*   Updated: 2019/01/12 20:37:20 by arh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,16 @@ void			ft_do_md5_or_sha256(char *str, t_flag *flags,
 		ft_sha512(str, flags, argv);
 }
 
-void			init_flags(t_flag *flags, int argc, char **argv)
+int			init_flags(t_flag *flags, int argc, char **argv)
 {
+	if (ft_strcmp(argv[1], "sha512") == 0)
+		flags->what = 3;
+	else if (ft_strcmp(argv[1], "md5") == 0)
+		flags->what = 1;
+	else if (ft_strcmp(argv[1], "sha256") == 0)
+		flags->what = 2;
+	else
+		return (-1);
 	flags->ite = 2;
 	flags->s = 0;
 	flags->r = 0;
@@ -53,17 +61,13 @@ void			init_flags(t_flag *flags, int argc, char **argv)
 	flags->p = 0;
 	flags->c = 0;
 	flags->files = 0;
-	if (ft_strcmp(argv[1], "sha512") == 0)
-		flags->what = 3;
-	else if (ft_strcmp(argv[1], "md5") == 0)
-		flags->what = 1;
-	else if (ft_strcmp(argv[1], "sha256") == 0)
-		flags->what = 2;
+	return (0);
 }
 
-void			ft_parser_flags(t_flag *flags, int argc, char **argv)
+int			ft_parser_flags(t_flag *flags, int argc, char **argv)
 {
-	init_flags(flags, argc, argv);
+	if ((init_flags(flags, argc, argv)) == -1)
+		return (-1);
 	while (flags->ite < argc)
 	{
 		if (ft_strcmp(argv[flags->ite], "-p") == 0)
@@ -81,6 +85,7 @@ void			ft_parser_flags(t_flag *flags, int argc, char **argv)
 		flags->ite++;
 	}
 	flags->files = argc - flags->ite;
+	return (0);
 }
 
 void			ft_go_with_flags(t_flag *flags, char **argv)
@@ -96,7 +101,7 @@ void			ft_go_with_flags(t_flag *flags, char **argv)
 	}
 	else if (flags->files > 0)
 	{
-		if ((flags->fd = open(argv[flags->ite], O_RDONLY | O_EXCL)) < 0)
+		if ((flags->fd = open(argv[flags->ite], O_RDWR)) < 0)
 		{
 			ft_printf("ft_ssl: %s: %s: No such file or directory\n",
 					argv[1], argv[flags->ite]);
@@ -112,7 +117,7 @@ void			ft_go_with_flags(t_flag *flags, char **argv)
 
 int				ft_usage_ssl(char **argv)
 {
-	ft_printf("Command %s not found, did you mean: \n\n", argv[0]);
+	ft_printf("Invalid command \"%s\", did you mean: \n\n", argv[1]);
 	ft_printf("command \'./ft_ssl md5\' [flags] [file]\n");
 	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n\n");
 	return (0);
@@ -123,10 +128,11 @@ int				main(int argc, char **argv)
 	t_flag			flags;
 
 	if (argc == 1)
-		return (ft_usage_ssl(argv));
+		return (0);
 	else if (argc > 1)
 	{
-		ft_parser_flags(&flags, argc, argv);
+		if ((ft_parser_flags(&flags, argc, argv)) == -1)
+			 return (ft_usage_ssl(argv));
 		if ((ft_strcmp(argv[1], "md5") == 0) ||
 				(ft_strcmp(argv[1], "sha256") == 0) || (ft_strcmp(argv[1], "sha512") == 0))
 		{

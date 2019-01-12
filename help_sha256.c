@@ -20,7 +20,8 @@ uint32_t	*ft_from_8_to_32_sha256(t_s256 *sha)
 
 	i = 0;
 	j = 0;
-	istr = (uint32_t *)malloc(sizeof(uint32_t) * sha->byte_len);
+	if (!(istr = (uint32_t *)malloc(sizeof(uint32_t) * sha->byte_len)))
+		return (NULL);
 	ft_bzero(istr, sha->byte_len);
 	while (i < sha->byte_len)
 	{

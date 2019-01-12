@@ -177,6 +177,33 @@ help_sha256.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha256.c.s
 .PHONY : help_sha256.c.s
 
+help_sha512.o: help_sha512.c.o
+
+.PHONY : help_sha512.o
+
+# target to build an object file
+help_sha512.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha512.c.o
+.PHONY : help_sha512.c.o
+
+help_sha512.i: help_sha512.c.i
+
+.PHONY : help_sha512.i
+
+# target to preprocess a source file
+help_sha512.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha512.c.i
+.PHONY : help_sha512.c.i
+
+help_sha512.s: help_sha512.c.s
+
+.PHONY : help_sha512.s
+
+# target to generate assembly for a file
+help_sha512.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha512.c.s
+.PHONY : help_sha512.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -300,6 +327,9 @@ help:
 	@echo "... help_sha256.o"
 	@echo "... help_sha256.i"
 	@echo "... help_sha256.s"
+	@echo "... help_sha512.o"
+	@echo "... help_sha512.i"
+	@echo "... help_sha512.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

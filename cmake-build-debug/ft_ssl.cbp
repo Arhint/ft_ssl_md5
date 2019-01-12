@@ -89,6 +89,9 @@
 		<Unit filename="/home/arh/study/ft_sslf/help_sha256.c">
 			<Option target="ft_ssl"/>
 		</Unit>
+		<Unit filename="/home/arh/study/ft_sslf/help_sha512.c">
+			<Option target="ft_ssl"/>
+		</Unit>
 		<Unit filename="/home/arh/study/ft_sslf/main.c">
 			<Option target="ft_ssl"/>
 		</Unit>

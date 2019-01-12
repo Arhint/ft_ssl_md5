@@ -123,5 +123,11 @@ void					init_sha256(t_s256 *sha);
 void					ft_printh_sha256(t_s256 *sha);
 void					ft_print_sha256(t_s256 *sha, t_flag *flags,
 										char **argv);
-void			ft_sha512(char *str, t_flag *flags, char **argv);
+void					ft_sha512(char *str, t_flag *flags, char **argv);
+void					ft_print_sha512(t_s512 *sha, t_flag *flags, char **argv);
+void					ft_printh_sha512(t_s512 *sha, uint8_t *res);
+uint64_t				ft_rr512(uint64_t f, uint64_t s);
+void					init_sha512(t_s512 *sha);
+unsigned char			*ft_append_sha512(unsigned char *str, uint64_t str_len,
+											size_t byte_len);
 #endif

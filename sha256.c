@@ -91,7 +91,8 @@ void			ft_sha256(char *str, t_flag *flags, char **argv)
 	i = 0;
 	sha.str_bits = (uint64_t)ft_strlen(str);
 	sha.byte_len = num_bytes(str, 256);
-	sha.res_bits = (unsigned char *)malloc(sha.byte_len);
+	 if (!(sha.res_bits = (unsigned char *)malloc(sha.byte_len)))
+	 		return ;
 	ft_bzero(sha.res_bits, sha.byte_len);
 	ft_memcpy(sha.res_bits, str, sha.str_bits);
 	sha.res_bits = ft_append_sha256(sha.res_bits, sha.str_bits, sha.byte_len);
