@@ -130,4 +130,5 @@ uint64_t				ft_rr512(uint64_t f, uint64_t s);
 void					init_sha512(t_s512 *sha);
 unsigned char			*ft_append_sha512(unsigned char *str, uint64_t str_len,
 											size_t byte_len);
+void		ft_ssl_out(t_flag *flags, int argc, char **argv);
 #endif

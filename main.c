@@ -6,7 +6,7 @@
 /*   By: arh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:47:02 by ssavchen          #+#    #+#             */
-/*   Updated: 2019/01/13 11:21:26 by arh              ###   ########.fr       */
+/*   Updated: 2019/01/13 21:41:25 by arh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,17 +115,78 @@ void			ft_go_with_flags(t_flag *flags, char **argv)
 	}
 }
 
-int				ft_usage_ssl(char **argv)
+void				ft_usage_ssl(char **argv)
 {
 	ft_printf("Invalid command \"%s\", did you mean: \n\n", argv[1]);
 	ft_printf("command \'./ft_ssl md5\' [flags] [file]\n");
 	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n\n");
-	return (0);
 }
 
-void			ft_ssl_full(t_flag *flags int argc, char **argv)
+void			ft_free_that(char **argv, char **test, char *string)
 {
+	int		i;
 
+	i = 0;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv);
+	i = 0;
+	while (test[i])
+		free(test[i++]);
+	free(test);
+	ft_strdel(&string);
+}
+
+void			ft_ssl_stdin(t_flag *flags, char **argv)
+{
+	char		**test;
+	char		*string;
+	int			argc;
+	int			i;
+
+//	string = "go";
+	while (1)
+	{
+		i = 0;
+		ft_printf("%s", "./ft_ssl> ");
+		get_next_line(0, &string);
+		if (ft_strcmp(string, "quit") == 0)
+			break;
+		argv = ft_strsplit(string, ' ');
+		argc = ft_count_words(string, ' ') + 1;
+		test = (char **)malloc(sizeof(char *) * (argc + 1));
+		test[0] = ft_strdup("./ft_ssl> ");
+		test[argc] = 0;
+		while (++i < argc)
+			test[i] = ft_strdup(argv[i - 1]);
+		ft_ssl_out(flags, argc, test);
+		ft_free_that(argv, test, string);
+	}
+	ft_strdel(&string);
+}
+
+void		ft_ssl_out(t_flag *flags, int argc, char **argv)
+{
+	if ((ft_parser_flags(flags, argc, argv)) == -1)
+	{
+		ft_usage_ssl(argv);
+		return ;
+	}
+	if ((ft_strcmp(argv[1], "md5") == 0) ||
+		(ft_strcmp(argv[1], "sha256") == 0) || (ft_strcmp(argv[1], "sha512") == 0))
+	{
+		if (flags->p || !flags->files)
+		{
+			new_gnl(0, &flags->str);
+			ft_do_md5_or_sha256(flags->str, flags, flags->what, argv);
+			flags->p = 0;
+		}
+		while (flags->ite < argc)
+		{
+			ft_go_with_flags(flags, argv);
+			flags->ite++;
+		}
+	}
 }
 
 int				main(int argc, char **argv)
@@ -133,26 +194,8 @@ int				main(int argc, char **argv)
 	t_flag			flags;
 
 	if (argc == 1)
-		ft_ssl_full(&flags, argc, argv);
+		ft_ssl_stdin(&flags, NULL);
 	else if (argc > 1)
-	{
-		if ((ft_parser_flags(&flags, argc, argv)) == -1)
-			 return (ft_usage_ssl(argv));
-		if ((ft_strcmp(argv[1], "md5") == 0) ||
-				(ft_strcmp(argv[1], "sha256") == 0) || (ft_strcmp(argv[1], "sha512") == 0))
-		{
-			if (flags.p || !flags.files)
-			{
-				new_gnl(0, &flags.str);
-				ft_do_md5_or_sha256(flags.str, &flags, flags.what, argv);
-				flags.p = 0;
-			}
-			while (flags.ite < argc)
-			{
-				ft_go_with_flags(&flags, argv);
-				flags.ite++;
-			}
-		}
-	}
+		ft_ssl_out(&flags, argc, argv);
 	return (0);
 }
