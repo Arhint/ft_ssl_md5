@@ -6,7 +6,7 @@
 /*   By: arh <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:47:02 by ssavchen          #+#    #+#             */
-/*   Updated: 2019/01/12 20:37:20 by arh              ###   ########.fr       */
+/*   Updated: 2019/01/13 11:21:26 by arh              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,17 @@ int				ft_usage_ssl(char **argv)
 	return (0);
 }
 
+void			ft_ssl_full(t_flag *flags int argc, char **argv)
+{
+
+}
+
 int				main(int argc, char **argv)
 {
 	t_flag			flags;
 
 	if (argc == 1)
-		return (0);
+		ft_ssl_full(&flags, argc, argv);
 	else if (argc > 1)
 	{
 		if ((ft_parser_flags(&flags, argc, argv)) == -1)
