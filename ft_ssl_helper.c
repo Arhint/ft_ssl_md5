@@ -96,5 +96,5 @@ void			ft_free_that(char **argv, char **test, char *string)
 	while (test[i])
 		free(test[i++]);
 	free(test);
-	ft_strdel(&string);
+	free(string);
 }

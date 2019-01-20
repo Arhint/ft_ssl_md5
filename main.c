@@ -66,6 +66,13 @@ void			ft_ssl_stdin(t_flag *flags, char **argv)
 			break ;
 		argv = ft_strsplit(string, ' ');
 		argc = ft_count_words(string, ' ') + 1;
+		if (!argv[0])
+		{
+			free(argv[0]);
+			free(argv);
+			ft_strdel(&string);
+			break ;
+		}
 		test = (char **)malloc(sizeof(char *) * (argc + 1));
 		test[0] = ft_strdup("./ft_ssl> ");
 		test[argc] = 0;
@@ -113,5 +120,6 @@ int				main(int argc, char **argv)
 	{
 		ft_ssl_out(&flags, argc, argv);
 	}
+	system("leaks ft_ssl");
 	return (0);
 }
