@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/58/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/58/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arh/study/ft_sslf
+CMAKE_SOURCE_DIR = /Users/ssavchen/ft_sslf
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arh/study/ft_sslf/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ssavchen/ft_sslf/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/arh/study/ft_sslf/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/58/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles /Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arh/study/ft_sslf/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -204,6 +204,33 @@ help_sha512.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha512.c.s
 .PHONY : help_sha512.c.s
 
+libft/ft_ssl_helper.o: libft/ft_ssl_helper.c.o
+
+.PHONY : libft/ft_ssl_helper.o
+
+# target to build an object file
+libft/ft_ssl_helper.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o
+.PHONY : libft/ft_ssl_helper.c.o
+
+libft/ft_ssl_helper.i: libft/ft_ssl_helper.c.i
+
+.PHONY : libft/ft_ssl_helper.i
+
+# target to preprocess a source file
+libft/ft_ssl_helper.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.i
+.PHONY : libft/ft_ssl_helper.c.i
+
+libft/ft_ssl_helper.s: libft/ft_ssl_helper.c.s
+
+.PHONY : libft/ft_ssl_helper.s
+
+# target to generate assembly for a file
+libft/ft_ssl_helper.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.s
+.PHONY : libft/ft_ssl_helper.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -319,8 +346,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... ft_ssl"
 	@echo "... edit_cache"
+	@echo "... ft_ssl"
 	@echo "... help_md5.o"
 	@echo "... help_md5.i"
 	@echo "... help_md5.s"
@@ -330,6 +357,9 @@ help:
 	@echo "... help_sha512.o"
 	@echo "... help_sha512.i"
 	@echo "... help_sha512.s"
+	@echo "... libft/ft_ssl_helper.o"
+	@echo "... libft/ft_ssl_helper.i"
+	@echo "... libft/ft_ssl_helper.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

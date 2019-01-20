@@ -2,7 +2,8 @@ NAME =	ft_ssl
 
 FLG =	-Wall -Wextra -Werror
 
-SRC =	main.c md5.c help_md5.c sha256.c help_sha256.c sha512.c help_sha512.c
+SRC =	main.c md5.c help_md5.c sha256.c help_sha256.c \
+		sha512.c help_sha512.c ft_ssl_helper.c
 
 OBJ =	$(SRC:.c=.o)
 
