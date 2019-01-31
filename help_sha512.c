@@ -51,8 +51,8 @@ void			ft_print_sha512(t_s512 *sha, t_flag *flags, char **argv)
 	if (!flags->q && flags->c)
 		ft_printh_sha512(sha, NULL);
 	else
-		ft_printf("%llx%lx%lx%lx%lx%lx%lx%lx", sha->h0, sha->h1, sha->h2,
-				sha->h3, sha->h4, sha->h5, sha->h6, sha->h7);
+		ft_printf("%016lx%016lx%016lx%016lx%016lx%016lx%016lx%016lx", sha->h0,
+		sha->h1, sha->h2, sha->h3, sha->h4, sha->h5, sha->h6, sha->h7);
 	if (flags->r && !flags->p && !flags->q && flags->s)
 		ft_printf(" \"%s\"", argv[flags->ite]);
 	else if (!flags->p && flags->r && !flags->q)
@@ -66,16 +66,21 @@ uint64_t		ft_rr512(uint64_t f, uint64_t s)
 	return ((f >> s) | (f << (64 - s)));
 }
 
-void			init_sha512(t_s512 *sha)
+void			init_sha512(t_s512 *sha, t_flag *flags)
 {
-	sha->a = 0x6a09e667f3bcc908;
-	sha->b = 0xbb67ae8584caa73b;
-	sha->c = 0x3c6ef372fe94f82b;
-	sha->d = 0xa54ff53a5f1d36f1;
-	sha->e = 0x510e527fade682d1;
-	sha->f = 0x9b05688c2b3e6c1f;
-	sha->g = 0x1f83d9abfb41bd6b;
-	sha->h = 0x5be0cd19137e2179;
+	if (flags->what == 3)
+	{
+		sha->a = 0x6a09e667f3bcc908;
+		sha->b = 0xbb67ae8584caa73b;
+		sha->c = 0x3c6ef372fe94f82b;
+		sha->d = 0xa54ff53a5f1d36f1;
+		sha->e = 0x510e527fade682d1;
+		sha->f = 0x9b05688c2b3e6c1f;
+		sha->g = 0x1f83d9abfb41bd6b;
+		sha->h = 0x5be0cd19137e2179;
+	}
+	else
+		ft_init_sha384(sha);
 	sha->h0 = sha->a;
 	sha->h1 = sha->b;
 	sha->h2 = sha->c;

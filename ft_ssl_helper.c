@@ -39,6 +39,8 @@ int				init_flags(t_flag *flags, int argc, char **argv)
 		flags->what = 1;
 	else if (ft_strcmp(argv[1], "sha256") == 0)
 		flags->what = 2;
+	else if (ft_strcmp(argv[1], "sha384") == 0)
+		flags->what = 4;
 	else
 		return (-1);
 	flags->ite = 2;
@@ -57,7 +59,9 @@ void			ft_usage_ssl(char **argv)
 {
 	ft_printf("Invalid command \"%s\", did you mean: \n\n", argv[1]);
 	ft_printf("command \'./ft_ssl md5\' [flags] [file]\n");
-	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n\n");
+	ft_printf("command \'./ft_ssl sha256\' [flags] [file]\n");
+	ft_printf("command \'./ft_ssl sha384\' [flags] [file]\n");
+	ft_printf("command \'./ft_ssl sha512\' [flags] [file]\n\n");
 }
 
 int				ft_parser_flags(t_flag *flags, int argc, char **argv)

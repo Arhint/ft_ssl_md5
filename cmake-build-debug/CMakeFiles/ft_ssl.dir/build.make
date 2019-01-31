@@ -148,18 +148,31 @@ CMakeFiles/ft_ssl.dir/help_sha512.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ssl.dir/help_sha512.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssavchen/ft_sslf/help_sha512.c -o CMakeFiles/ft_ssl.dir/help_sha512.c.s
 
-CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o: CMakeFiles/ft_ssl.dir/flags.make
-CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o: ../libft/ft_ssl_helper.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o   -c /Users/ssavchen/ft_sslf/libft/ft_ssl_helper.c
+CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o: CMakeFiles/ft_ssl.dir/flags.make
+CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o: ../ft_ssl_helper.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o   -c /Users/ssavchen/ft_sslf/ft_ssl_helper.c
 
-CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssavchen/ft_sslf/libft/ft_ssl_helper.c > CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.i
+CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssavchen/ft_sslf/ft_ssl_helper.c > CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.i
 
-CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssavchen/ft_sslf/libft/ft_ssl_helper.c -o CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.s
+CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssavchen/ft_sslf/ft_ssl_helper.c -o CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.s
+
+CMakeFiles/ft_ssl.dir/sha384.c.o: CMakeFiles/ft_ssl.dir/flags.make
+CMakeFiles/ft_ssl.dir/sha384.c.o: ../sha384.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ft_ssl.dir/sha384.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_ssl.dir/sha384.c.o   -c /Users/ssavchen/ft_sslf/sha384.c
+
+CMakeFiles/ft_ssl.dir/sha384.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_ssl.dir/sha384.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssavchen/ft_sslf/sha384.c > CMakeFiles/ft_ssl.dir/sha384.c.i
+
+CMakeFiles/ft_ssl.dir/sha384.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_ssl.dir/sha384.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssavchen/ft_sslf/sha384.c -o CMakeFiles/ft_ssl.dir/sha384.c.s
 
 # Object files for target ft_ssl
 ft_ssl_OBJECTS = \
@@ -170,7 +183,8 @@ ft_ssl_OBJECTS = \
 "CMakeFiles/ft_ssl.dir/help_sha256.c.o" \
 "CMakeFiles/ft_ssl.dir/sha512.c.o" \
 "CMakeFiles/ft_ssl.dir/help_sha512.c.o" \
-"CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o"
+"CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o" \
+"CMakeFiles/ft_ssl.dir/sha384.c.o"
 
 # External object files for target ft_ssl
 ft_ssl_EXTERNAL_OBJECTS =
@@ -182,10 +196,11 @@ ft_ssl: CMakeFiles/ft_ssl.dir/sha256.c.o
 ft_ssl: CMakeFiles/ft_ssl.dir/help_sha256.c.o
 ft_ssl: CMakeFiles/ft_ssl.dir/sha512.c.o
 ft_ssl: CMakeFiles/ft_ssl.dir/help_sha512.c.o
-ft_ssl: CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o
+ft_ssl: CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o
+ft_ssl: CMakeFiles/ft_ssl.dir/sha384.c.o
 ft_ssl: CMakeFiles/ft_ssl.dir/build.make
 ft_ssl: CMakeFiles/ft_ssl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable ft_ssl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ssavchen/ft_sslf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable ft_ssl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_ssl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

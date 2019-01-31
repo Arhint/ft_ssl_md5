@@ -85,6 +85,9 @@
 		<Unit filename="/Users/ssavchen/ft_sslf/ft_ssl.h">
 			<Option target="ft_ssl"/>
 		</Unit>
+		<Unit filename="/Users/ssavchen/ft_sslf/ft_ssl_helper.c">
+			<Option target="ft_ssl"/>
+		</Unit>
 		<Unit filename="/Users/ssavchen/ft_sslf/help_md5.c">
 			<Option target="ft_ssl"/>
 		</Unit>
@@ -94,9 +97,6 @@
 		<Unit filename="/Users/ssavchen/ft_sslf/help_sha512.c">
 			<Option target="ft_ssl"/>
 		</Unit>
-		<Unit filename="/Users/ssavchen/ft_sslf/libft/ft_ssl_helper.c">
-			<Option target="ft_ssl"/>
-		</Unit>
 		<Unit filename="/Users/ssavchen/ft_sslf/main.c">
 			<Option target="ft_ssl"/>
 		</Unit>
@@ -104,6 +104,9 @@
 			<Option target="ft_ssl"/>
 		</Unit>
 		<Unit filename="/Users/ssavchen/ft_sslf/sha256.c">
+			<Option target="ft_ssl"/>
+		</Unit>
+		<Unit filename="/Users/ssavchen/ft_sslf/sha384.c">
 			<Option target="ft_ssl"/>
 		</Unit>
 		<Unit filename="/Users/ssavchen/ft_sslf/sha512.c">

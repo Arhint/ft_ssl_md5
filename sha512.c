@@ -155,7 +155,7 @@ void			ft_sha512(char *str, t_flag *flags, char **argv)
 	ft_memcpy(sha.res_bits, str, sha.str_bits);
 	sha.res_bits = ft_append_sha512(sha.res_bits, sha.str_bits, sha.byte_len);
 	istr = ft_from_8_to_64_sha256(&sha, 0, 0);
-	init_sha512(&sha);
+	init_sha512(&sha, flags);
 	while (sha.blocks)
 	{
 		ft_algo_sha512(&sha, istr + i);
@@ -163,5 +163,8 @@ void			ft_sha512(char *str, t_flag *flags, char **argv)
 		sha.blocks--;
 	}
 	free(istr);
-	ft_print_sha512(&sha, flags, argv);
+	if (flags->what == 3)
+		ft_print_sha512(&sha, flags, argv);
+	else
+		ft_print_sha384(&sha, flags, argv);
 }

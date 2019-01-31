@@ -1,0 +1,31 @@
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+string findNumber(vector<int> arr, int k) {
+    string answer = "NO";
+    int i = 0;
+    int lenOfArray;
+
+    lenOfArray = arr.size();
+    while (i < lenOfArray)
+    {
+        if (arr[i] == k)
+        {
+            answer = "YES";
+            break ;
+        }
+        i++;
+    }
+    return (answer);
+}
+
+int		main()
+{
+	string ad;
+	std::vector<int> v = [1, 2, 3, 4, 5];
+	ad = findNumber(v, 0);
+	cout << ad << endl;
+	return (0);
+}

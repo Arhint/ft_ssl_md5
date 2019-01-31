@@ -19,7 +19,7 @@ void			ft_do_md5_or_sha256(char *str, t_flag *flags,
 		ft_md5(str, flags, argv);
 	else if (what == 2)
 		ft_sha256(str, flags, argv);
-	else if (what == 3)
+	else if (what == 3 || what == 4)
 		ft_sha512(str, flags, argv);
 }
 
@@ -56,13 +56,14 @@ void			ft_ssl_stdin(t_flag *flags, char **argv)
 	char		*string;
 	int			argc;
 	int			i;
-	int			gnl;
+//	int			gnl;
 
 	while (1)
 	{
 		i = 0;
-		gnl = get_next_line(0, &string);
-		if (ft_strcmp(string, "quit") == 0 || gnl <= 0)
+		ft_printf("./ft_ssl> ");
+//		gnl = get_next_line(0, &string);
+		if (ft_strcmp(string, "quit") == 0 || get_next_line(0, &string) <= 0)
 			break ;
 		argv = ft_strsplit(string, ' ');
 		argc = ft_count_words(string, ' ') + 1;
@@ -92,10 +93,12 @@ void			ft_ssl_out(t_flag *flags, int argc, char **argv)
 	}
 	if ((ft_strcmp(argv[1], "md5") == 0) ||
 		(ft_strcmp(argv[1], "sha256") == 0) ||
-		(ft_strcmp(argv[1], "sha512") == 0))
+		(ft_strcmp(argv[1], "sha512") == 0) ||
+		(ft_strcmp(argv[1], "sha384") == 0))
 	{
 		if (flags->p || !flags->files)
 		{
+//			flags->p = 1;
 			new_gnl(0, &flags->str);
 			ft_do_md5_or_sha256(flags->str, flags, flags->what, argv);
 			flags->p = 0;
@@ -120,6 +123,6 @@ int				main(int argc, char **argv)
 	{
 		ft_ssl_out(&flags, argc, argv);
 	}
-	system("leaks ft_ssl");
+	// system("leaks ft_ssl");
 	return (0);
 }

@@ -6,7 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_ssl.dir/help_sha256.c.o"
   "CMakeFiles/ft_ssl.dir/sha512.c.o"
   "CMakeFiles/ft_ssl.dir/help_sha512.c.o"
-  "CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o"
+  "CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o"
+  "CMakeFiles/ft_ssl.dir/sha384.c.o"
   "ft_ssl.pdb"
   "ft_ssl"
 )

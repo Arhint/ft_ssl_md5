@@ -97,8 +97,8 @@ void		ft_print_sha256(t_s256 *sha, t_flag *flags, char **argv)
 	if (!flags->q && flags->c)
 		ft_printh_sha256(sha);
 	else
-		ft_printf("%x%x%x%x%x%x%x%x", sha->h0, sha->h1, sha->h2, sha->h3,
-				sha->h4, sha->h5, sha->h6, sha->h7);
+		ft_printf("%08x%08x%08x%08x%08x%08x%08x%08x", sha->h0, sha->h1,
+				sha->h2, sha->h3, sha->h4, sha->h5, sha->h6, sha->h7);
 	if (flags->r && !flags->p && !flags->q && flags->s)
 		ft_printf(" \"%s\"", argv[flags->ite]);
 	else if (!flags->p && flags->r && !flags->q)

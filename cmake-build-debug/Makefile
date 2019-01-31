@@ -123,6 +123,33 @@ ft_ssl/fast:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/build
 .PHONY : ft_ssl/fast
 
+ft_ssl_helper.o: ft_ssl_helper.c.o
+
+.PHONY : ft_ssl_helper.o
+
+# target to build an object file
+ft_ssl_helper.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.o
+.PHONY : ft_ssl_helper.c.o
+
+ft_ssl_helper.i: ft_ssl_helper.c.i
+
+.PHONY : ft_ssl_helper.i
+
+# target to preprocess a source file
+ft_ssl_helper.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.i
+.PHONY : ft_ssl_helper.c.i
+
+ft_ssl_helper.s: ft_ssl_helper.c.s
+
+.PHONY : ft_ssl_helper.s
+
+# target to generate assembly for a file
+ft_ssl_helper.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/ft_ssl_helper.c.s
+.PHONY : ft_ssl_helper.c.s
+
 help_md5.o: help_md5.c.o
 
 .PHONY : help_md5.o
@@ -203,33 +230,6 @@ help_sha512.s: help_sha512.c.s
 help_sha512.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/help_sha512.c.s
 .PHONY : help_sha512.c.s
-
-libft/ft_ssl_helper.o: libft/ft_ssl_helper.c.o
-
-.PHONY : libft/ft_ssl_helper.o
-
-# target to build an object file
-libft/ft_ssl_helper.c.o:
-	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.o
-.PHONY : libft/ft_ssl_helper.c.o
-
-libft/ft_ssl_helper.i: libft/ft_ssl_helper.c.i
-
-.PHONY : libft/ft_ssl_helper.i
-
-# target to preprocess a source file
-libft/ft_ssl_helper.c.i:
-	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.i
-.PHONY : libft/ft_ssl_helper.c.i
-
-libft/ft_ssl_helper.s: libft/ft_ssl_helper.c.s
-
-.PHONY : libft/ft_ssl_helper.s
-
-# target to generate assembly for a file
-libft/ft_ssl_helper.c.s:
-	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/libft/ft_ssl_helper.c.s
-.PHONY : libft/ft_ssl_helper.c.s
 
 main.o: main.c.o
 
@@ -312,6 +312,33 @@ sha256.c.s:
 	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha256.c.s
 .PHONY : sha256.c.s
 
+sha384.o: sha384.c.o
+
+.PHONY : sha384.o
+
+# target to build an object file
+sha384.c.o:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha384.c.o
+.PHONY : sha384.c.o
+
+sha384.i: sha384.c.i
+
+.PHONY : sha384.i
+
+# target to preprocess a source file
+sha384.c.i:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha384.c.i
+.PHONY : sha384.c.i
+
+sha384.s: sha384.c.s
+
+.PHONY : sha384.s
+
+# target to generate assembly for a file
+sha384.c.s:
+	$(MAKE) -f CMakeFiles/ft_ssl.dir/build.make CMakeFiles/ft_ssl.dir/sha384.c.s
+.PHONY : sha384.c.s
+
 sha512.o: sha512.c.o
 
 .PHONY : sha512.o
@@ -348,6 +375,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ft_ssl"
+	@echo "... ft_ssl_helper.o"
+	@echo "... ft_ssl_helper.i"
+	@echo "... ft_ssl_helper.s"
 	@echo "... help_md5.o"
 	@echo "... help_md5.i"
 	@echo "... help_md5.s"
@@ -357,9 +387,6 @@ help:
 	@echo "... help_sha512.o"
 	@echo "... help_sha512.i"
 	@echo "... help_sha512.s"
-	@echo "... libft/ft_ssl_helper.o"
-	@echo "... libft/ft_ssl_helper.i"
-	@echo "... libft/ft_ssl_helper.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -369,6 +396,9 @@ help:
 	@echo "... sha256.o"
 	@echo "... sha256.i"
 	@echo "... sha256.s"
+	@echo "... sha384.o"
+	@echo "... sha384.i"
+	@echo "... sha384.s"
 	@echo "... sha512.o"
 	@echo "... sha512.i"
 	@echo "... sha512.s"
